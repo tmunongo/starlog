@@ -1,0 +1,63 @@
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
+
+async function main() {
+  await prisma.user.create({
+    data: {
+      email: "test1@example.com",
+      username: "test_user1",
+      hashedPassword: "test_password1",
+      submissions: {
+        createMany: {
+          data: getPlaces(),
+        },
+      },
+    },
+  });
+}
+
+function getPlaces() {
+  return [
+    {
+      name: "Rijksmuseum",
+      country: "The Netherlands",
+      city: "Amsterdam",
+      category: "Museum",
+      tags: ["Family Friendly", "Cheap"],
+      coverImage:
+        "https://res.cloudinary.com/ta1da-cloud/image/upload/v1669875925/seven-wonders/rijksmuseum_bhch2l.jpg",
+      budget: 49.99,
+      costRating: "Cheap",
+    },
+    {
+      name: "Rijksmuseum",
+      country: "The Netherlands",
+      city: "Amsterdam",
+      category: "Museum",
+      tags: ["Family Friendly", "Cheap"],
+      coverImage:
+        "https://res.cloudinary.com/ta1da-cloud/image/upload/v1669875925/seven-wonders/rijksmuseum_bhch2l.jpg",
+      budget: 49.99,
+      costRating: "Cheap",
+    },
+    {
+      name: "Rijksmuseum",
+      country: "The Netherlands",
+      city: "Amsterdam",
+      category: "Museum",
+      tags: ["Family Friendly", "Cheap"],
+      coverImage:
+        "https://res.cloudinary.com/ta1da-cloud/image/upload/v1669875925/seven-wonders/rijksmuseum_bhch2l.jpg",
+      budget: 49.99,
+      costRating: "Cheap",
+    },
+  ];
+}
+
+main()
+  .catch((e) => {
+    console.error(e);
+    process.exit(1);
+  })
+  .finally(async () => await prisma.$disconnect);

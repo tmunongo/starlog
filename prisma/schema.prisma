@@ -1,0 +1,69 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  username       String   @unique
+  email          String   @unique
+  hashedPassword String
+  // places that a user has contributed to the community
+  submissions    Place[]  @relation("Places")
+  // places that a user has visited
+  visited        Place[]  @relation("Visitors", fields: [visitedIds], references: [id])
+  visitedIds     String[] @db.ObjectId
+  // places that a user wishes to visit
+  wishlist       Place[]  @relation("Prospects", fields: [wishlistIds], references: [id])
+  wishlistIds    String[] @db.ObjectId
+
+  @@map("users")
+}
+
+model Place {
+  id                  String   @id @default(auto()) @map("_id") @db.ObjectId
+  name                String
+  country             String
+  city                String
+  // e.g. Local Food, Historical Site, Museum, Fine Dining, Amusement Park
+  category            String
+  // tags, e.g Family Friendly, Cheap,
+  tags                String[]
+  // image cover stored in Cloudinary
+  coverImage          String
+  // in dollars, for now
+  budget              Float
+  // a cost rating in dollars: Expensive, Affordable, Cheap
+  costRating          String
+  // Number of upvotes from users
+  upvotes             Int      @default(0)
+  // only users that have visited a place can vote on it
+  // Number of downvotes from users. 
+  downvotes           Int      @default(0)
+  // if we receive paid sponsorship from a place, it can be lifted to the top of the results list
+  sponsored           Boolean  @default(false)
+  // a place gets a safety rating based on users votes
+  safetyRating        Float    @default(0.0)
+  // users will give a place an accessibility rating that factors in transport links, staff language, tolerance to foreigners or LGBTQ, etc
+  accessibilityRating Float    @default(0.0)
+  // a weighted average of all rating scores used to determing search ranking
+  overallRating       Float    @default(0.0)
+  // the user that submits a place to the platform
+  submittedBy         User     @relation("Places", fields: [submitterId], references: [id])
+  submitterId         String   @db.ObjectId
+  // a user that acknowledges on the site that they have visited a place
+  visitors            User[]   @relation("Visitors", fields: [visitor], references: [id])
+  visitor             String[] @db.ObjectId
+  // a user that has added a place to their wishlist
+  onWishlist          User[]   @relation("Prospects", fields: [wantsToVisit], references: [id])
+  wantsToVisit        String[] @db.ObjectId
+
+  @@map("places")
+}

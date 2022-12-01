@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  # this service is the database service using mongo from docker hub
+  mongo:
+    image: mongo-replica:latest
+    container_name: sev-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - swn-vol:/etc/mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+volumes:
+  swn-vol:
