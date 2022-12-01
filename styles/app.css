@@ -18,5 +18,10 @@ h3 {
 /* body */
 body {
   /* font-family: "Roboto", sans-serif; */
-  @apply font-["Roboto"];
+  @apply font-["Roboto"] bg-seashell;
 }
+
+/* general styles */
+/* #home-place-image-div {
+  background-image: url();
+} */

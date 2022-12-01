@@ -3,8 +3,12 @@ import type { LoaderFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import prisma from "prisma/db.server";
+import { useState } from "react";
 import ButtonAsLink from "~/components/ButtonAsLink";
+import FilterItem from "~/components/FilterItem";
 import HomeLayout from "~/components/HomeLayout";
+import HomePlace from "~/components/HomePlace";
+import { getUnique } from "~/utils/getUnique";
 
 type LoaderData = {
   placeListItems: Place[];
@@ -21,8 +25,14 @@ export const loader: LoaderFunction = async () => {
 };
 
 export default function Index() {
+  const [filter, setFilter] = useState<string>("");
   const places = useLoaderData<LoaderData>() as unknown as LoaderData;
   let isLoggedIn = false;
+
+  const handleFilter = (value: string) => {
+    setFilter(value);
+  };
+
   return (
     <HomeLayout>
       <div className="h-screen w-screen flex flex-col items-center justify-start my-2">
@@ -39,15 +49,27 @@ export default function Index() {
           <h3 className="text-slate-600">
             Pick a Category to Find What You're Looking For
           </h3>
-          <div className="w-full md:w-4/5 border-y">
-            <span className="pl-1">Filters:</span>
+          <div className="w-full border-y h-14 flex items-center justify-start">
+            <span className="pl-2 text-lg">
+              Filter:
+              <span onClick={() => handleFilter("")}>
+                <FilterItem>All</FilterItem>
+              </span>
+              {getUnique(places.placeListItems).map((item, index) => (
+                <span key={index} onClick={() => handleFilter(item.category)}>
+                  <FilterItem>{item.category}</FilterItem>
+                </span>
+              ))}
+            </span>
           </div>
-          <div className="flex items-start justify-around">
-            {places.placeListItems.map((item, index) => (
-              <div key={index}>
-                <p>{item.name}</p>
-              </div>
-            ))}
+          <div className="flex flex-col items-start justify-around">
+            {filter == ""
+              ? places.placeListItems.map((item, index) => (
+                  <HomePlace key={index} place={item} />
+                ))
+              : places.placeListItems
+                  .filter((place) => place.category == filter)
+                  .map((item, index) => <HomePlace key={index} place={item} />)}
           </div>
         </div>
       </div>
