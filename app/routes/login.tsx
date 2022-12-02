@@ -1,10 +1,10 @@
 import { ActionFunction, json } from "@remix-run/node";
-import { Link, useActionData, useSearchParams } from "@remix-run/react";
+import { useActionData, useSearchParams } from "@remix-run/react";
 // import { createServerClient } from "@supabase/auth-helpers-remix";
 import prisma from "prisma/db.server";
 import { useState } from "react";
-import { createUserSession, login } from "~/utils/login";
 import { validateUrl } from "~/utils/validateUrl";
+import { createUserSession, login, register } from "../utils/login.server";
 
 type Props = {};
 
@@ -18,7 +18,7 @@ type ActionData = {
   fields?: {
     loginType: string;
     email: string;
-    username: string;
+    username?: string;
     password: string;
   };
 };
@@ -46,7 +46,6 @@ function validatePassword(password: unknown) {
 const badRequest = (data: ActionData) => json(data, { status: 400 });
 
 export const action: ActionFunction = async ({ request }) => {
-  // const saltRounds = 10;
   const form = await request.formData();
   const loginType = form.get("loginType");
   const username = form.get("username") || "";
@@ -78,12 +77,14 @@ export const action: ActionFunction = async ({ request }) => {
           email: validateEmail(email),
           password: validatePassword(password),
         };
-  console.log(fieldErrors);
-  if (Object.values(fieldErrors).some(Boolean))
+  if (Object.values(fieldErrors).some(Boolean)) {
     return badRequest({ fieldErrors, fields });
+  }
+
   switch (loginType) {
     case "login": {
       const user = await login({ email, password });
+      // console.log(user);
       if (!user) {
         return badRequest({
           fields,
@@ -112,6 +113,14 @@ export const action: ActionFunction = async ({ request }) => {
           formError: `User with the email ${email} or ${username} already exists`,
         });
       }
+      const thisUser = await register({ email, username, password });
+      if (!thisUser) {
+        return badRequest({
+          fields,
+          formError: `Your registration could not be validated`,
+        });
+      }
+      return createUserSession(thisUser.id, redirectTo);
     }
     default: {
       return badRequest({
@@ -131,14 +140,6 @@ export const action: ActionFunction = async ({ request }) => {
   //   password: String(password),
   // });
 
-  // This is actually for signing up
-  // const hash = bcrypt.hash(String(password), saltRounds, function(err, hash) {
-  //   if (err) {
-  //     return err.message;
-  //   }
-  //   return hash;
-  // })
-
   // headers must be returned with the loader response for the set-cookie header to be set
   // return json(
   //   { user },
@@ -154,8 +155,18 @@ const Login = (props: Props) => {
   const actionData = useActionData<ActionData>();
   const [searchParams] = useSearchParams();
   return (
-    <div className="flex items-center justify-center">
-      <form method="post" className="flex flex-col items-start justify-around">
+    <div className="flex items-center justify-center w-screen h-screen">
+      <form
+        method="post"
+        className="flex flex-col items-center justify-center h-4/5 w-full md:w-1/2 shadow-md p-4"
+      >
+        {authType == "login" ? (
+          <h2 className="my-2 underline underline-offset-2 decoration-green-600 ">
+            Login
+          </h2>
+        ) : (
+          <h2 className="my-2">Register</h2>
+        )}
         <input
           type="hidden"
           name="redirectTo"
@@ -163,7 +174,7 @@ const Login = (props: Props) => {
         />
         <fieldset>
           <legend className="sr-only">Login or Register?</legend>
-          <label>
+          <label className="m-2">
             <input
               type="radio"
               name="loginType"
@@ -187,10 +198,13 @@ const Login = (props: Props) => {
             Register
           </label>
         </fieldset>
-        <label htmlFor="email">Email: </label>
+        <label htmlFor="email" className="text-lg my-2">
+          Email
+        </label>
         <input
           type="email"
           name="email"
+          className="p-2 h-10 w-80 border border-black rounded-2xl"
           defaultValue={actionData?.fields?.email}
           aria-invalid={Boolean(actionData?.fieldErrors?.email)}
           aria-errormessage={
@@ -198,7 +212,7 @@ const Login = (props: Props) => {
           }
         />
         {actionData?.fieldErrors?.email ? (
-          <p className="" role="alert" id="username-error">
+          <p className="" role="alert" id="email-error">
             {actionData.fieldErrors.email}
           </p>
         ) : null}
@@ -208,6 +222,7 @@ const Login = (props: Props) => {
             <input
               type="text"
               name="username"
+              className="p-2 h-10 w-80 border border-black rounded-2xl"
               aria-errormessage={
                 actionData?.fieldErrors?.username ? "username-error" : undefined
               }
@@ -220,6 +235,7 @@ const Login = (props: Props) => {
         <input
           type="password"
           name="password"
+          className="p-2 h-10 w-80 border border-black rounded-2xl"
           defaultValue={actionData?.fields?.password}
           aria-invalid={Boolean(actionData?.fieldErrors?.password) || undefined}
           aria-errormessage={
@@ -231,10 +247,21 @@ const Login = (props: Props) => {
             {actionData.fieldErrors.password}
           </p>
         ) : null}
-        <button type="submit">Login</button>
-        <Link to="/signup">
+        {authType == "login" ? (
+          <button type="submit" className="bg-orange-400 p-2 m-2 rounded-md">
+            Login
+          </button>
+        ) : (
+          <button type="submit" className="bg-orange-400 p-2 m-2 rounded-md">
+            Register
+          </button>
+        )}
+        {/* <button type="submit" className="bg-orange-400 p-2 m-2 rounded-md">
+          Login
+        </button> */}
+        {/* <Link to="/signup">
           <span>No account? Join here.</span>
-        </Link>
+        </Link> */}
       </form>
     </div>
   );
