@@ -14,7 +14,7 @@ model User {
   id             String   @id @default(auto()) @map("_id") @db.ObjectId
   username       String   @unique
   email          String   @unique
-  hashedPassword String
+  hashedPassword String?
   // places that a user has contributed to the community
   submissions    Place[]  @relation("Places")
   // places that a user has visited

@@ -41,7 +41,7 @@ export default function Index() {
             // Will be replaced with a profile icon
             <ButtonAsLink to="/profile">Hi, UserX</ButtonAsLink>
           ) : (
-            <ButtonAsLink to="/join">Not Logged In</ButtonAsLink>
+            <ButtonAsLink to="/signup">Not Logged In</ButtonAsLink>
           )}
         </div>
         <div className="mt-6 p-4 rounded-md h-full w-full md:w-4/5">

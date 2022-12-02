@@ -31,15 +31,15 @@ function getPlaces() {
       costRating: "Cheap",
     },
     {
-      name: "Rijksmuseum",
-      country: "The Netherlands",
-      city: "Amsterdam",
-      category: "Museum",
+      name: "Mount Rushmore",
+      country: "USA",
+      city: "Denver",
+      category: "Historical Site",
       tags: ["Family Friendly", "Cheap"],
       coverImage:
-        "https://res.cloudinary.com/ta1da-cloud/image/upload/v1669875925/seven-wonders/rijksmuseum_bhch2l.jpg",
+        "https://res.cloudinary.com/ta1da-cloud/image/upload/v1669875929/seven-wonders/mt-rushmore_xublxg.jpg",
       budget: 49.99,
-      costRating: "Cheap",
+      costRating: "Affordable",
     },
     {
       name: "Rijksmuseum",
