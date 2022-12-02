@@ -63,7 +63,7 @@ export default function Index() {
               </LinkButtonElement>
             </div>
           ) : (
-            <ButtonAsLink to="/signup">Not Logged In</ButtonAsLink>
+            <ButtonAsLink to="/login">Not Logged In</ButtonAsLink>
           )}
         </div>
         <div className="mt-6 p-4 rounded-md h-full w-full md:w-4/5">
