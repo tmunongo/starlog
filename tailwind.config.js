@@ -8,6 +8,7 @@ module.exports = {
       },
       colors: {
         seashell: "#FFF3F0",
+        mintgreen: "#EDF4ED",
       },
     },
   },
