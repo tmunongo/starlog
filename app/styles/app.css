@@ -577,8 +577,8 @@ video {
   margin: 0.5rem;
 }
 
-.m-4 {
-  margin: 1rem;
+.m-1 {
+  margin: 0.25rem;
 }
 
 .mx-1 {
@@ -645,12 +645,16 @@ video {
   height: 5rem;
 }
 
-.h-screen {
-  height: 100vh;
+.h-6 {
+  height: 1.5rem;
 }
 
 .h-14 {
   height: 3.5rem;
+}
+
+.h-screen {
+  height: 100vh;
 }
 
 .h-4\/5 {
@@ -701,12 +705,8 @@ video {
   width: 20rem;
 }
 
-.w-\[40\%\] {
-  width: 40%;
-}
-
-.w-2\/3 {
-  width: 66.666667%;
+.w-\[65\%\] {
+  width: 65%;
 }
 
 .cursor-grab {
@@ -831,6 +831,11 @@ video {
   background-color: rgb(240 244 239 / var(--tw-bg-opacity));
 }
 
+.bg-\[\#1C2541\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(28 37 65 / var(--tw-bg-opacity));
+}
+
 .bg-orange-400 {
   --tw-bg-opacity: 1;
   background-color: rgb(251 146 60 / var(--tw-bg-opacity));
@@ -919,6 +924,10 @@ video {
   font-weight: 700;
 }
 
+.italic {
+  font-style: italic;
+}
+
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
@@ -932,6 +941,11 @@ video {
 .text-slate-600 {
   --tw-text-opacity: 1;
   color: rgb(71 85 105 / var(--tw-text-opacity));
+}
+
+.text-gray-600 {
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity));
 }
 
 .underline {
@@ -953,6 +967,12 @@ video {
 .shadow-md {
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.shadow-lg {
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
@@ -1113,6 +1133,10 @@ aside {
     left: 1rem;
   }
 
+  .md\:m-4 {
+    margin: 1rem;
+  }
+
   .md\:mx-\[20\%\] {
     margin-left: 20%;
     margin-right: 20%;
@@ -1128,6 +1152,14 @@ aside {
 
   .md\:w-1\/2 {
     width: 50%;
+  }
+
+  .md\:w-\[40\%\] {
+    width: 40%;
+  }
+
+  .md\:w-2\/3 {
+    width: 66.666667%;
   }
 
   .md\:p-2 {

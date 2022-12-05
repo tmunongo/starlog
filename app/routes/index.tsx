@@ -44,7 +44,7 @@ export default function Index() {
 
   return (
     <HomeLayout>
-      <div className="h-screen w-screen flex flex-col items-center justify-start my-2">
+      <div className="min-h-screen w-screen flex flex-col items-center justify-start my-2">
         <div className="mt-6 p-4 rounded-md h-full w-full md:w-4/5">
           <p className="text-lg md:text-xl">Explore New Places</p>
           <p className="text-slate-600 text-base md:text-lg">
