@@ -51,6 +51,8 @@ model Place {
   sponsored           Boolean  @default(false)
   // a place gets a safety rating based on users votes
   safetyRating        Float    @default(0.0)
+  // number of users who have viewed the page
+  // pageView Int @default(0)
   // users will give a place an accessibility rating that factors in transport links, staff language, tolerance to foreigners or LGBTQ, etc
   accessibilityRating Float    @default(0.0)
   // a weighted average of all rating scores used to determing search ranking

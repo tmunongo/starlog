@@ -9,6 +9,8 @@ module.exports = {
       colors: {
         seashell: "#FFF3F0",
         mintgreen: "#EDF4ED",
+        myr: "#FFBA49",
+        babypowder: "#F0F4EF",
       },
     },
   },

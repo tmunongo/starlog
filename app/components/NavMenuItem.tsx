@@ -5,7 +5,7 @@ type Props = {
   elem: {
     content: string;
     location: string;
-    icon: string;
+    id: number;
   };
 };
 

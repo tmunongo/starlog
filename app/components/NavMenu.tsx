@@ -1,51 +1,46 @@
 import { motion } from "framer-motion";
+import { navItems } from "~/data/navigation";
 import { NavMenuItem } from "./NavMenuItem";
+
+const sideVariants = {
+  closed: {
+    transition: {
+      staggerChildren: 0.2,
+      staggerDirection: -1,
+    },
+  },
+  open: {
+    transition: {
+      staggerChildren: 0.2,
+      staggerDirection: 1,
+    },
+  },
+};
 
 const variants = {
   open: {
-    transition: { staggerChildren: 0.07, delayChildren: 0.2 },
+    transition: { staggerChildren: 0.2, delayChildren: 1 },
   },
   closed: {
-    transition: { staggerChildren: 0.05, staggerDirection: -1 },
+    transition: { staggerChildren: 0.2, staggerDirection: -1 },
   },
 };
 
 export const NavMenu = () => (
-  <motion.ul
-    variants={variants}
-    id="navBackground"
-    className="flex flex-col items-start justify-around bg-mintgreen"
+  <motion.div
+    id="nav-container"
+    initial={closed}
+    animate="open"
+    exit="closed"
+    variants={sideVariants}
   >
-    {navItems.map((item, index) => (
-      <NavMenuItem key={index} elem={item} />
-    ))}
-  </motion.ul>
+    <motion.ul
+    // variants={variants}
+    // className="flex flex-col items-start justify-around bg-mintgreen"
+    >
+      {navItems.map((item, index) => (
+        <NavMenuItem key={index} elem={item} />
+      ))}
+    </motion.ul>
+  </motion.div>
 );
-
-const navItems = [
-  {
-    content: "Home",
-    location: "/",
-    icon: "<MdPerson size={25} />",
-  },
-  {
-    content: "Profile",
-    location: "/profile",
-    icon: "<MdPerson size={25} />",
-  },
-  {
-    content: "New",
-    location: "/places/new",
-    icon: "<MdPerson size={25} />",
-  },
-  {
-    content: "My Places",
-    location: "/myplaces",
-    icon: "<MdPerson size={25} />",
-  },
-  {
-    content: "My Bucket List",
-    location: "/bucket-list",
-    icon: "<MdPerson size={25} />",
-  },
-];

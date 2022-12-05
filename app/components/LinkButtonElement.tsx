@@ -8,7 +8,7 @@ type Props = {
 
 const LinkButtonElement = ({ children, to }: Props) => {
   return (
-    <div className="bg-[#FCA311] p-1 md:p-2 px-3 md:px-6 rounded-md border">
+    <div className="bg-myr p-1 md:p-2 px-3 md:px-6 rounded-md border">
       <Link to={to}>{children}</Link>
     </div>
   );
