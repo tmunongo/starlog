@@ -30,6 +30,8 @@ type LoaderData = {
   user: Awaited<ReturnType<typeof getUser>>;
 };
 
+const badRequest = (data: ActionData) => json(data, { status: 400 });
+
 export const loader: LoaderFunction = async ({ request }) => {
   const user = await getUser(request);
 
@@ -70,9 +72,21 @@ export const action: ActionFunction = async ({ request }) => {
   const category = formData.get("category");
   const tags = formData.get("tags");
   const budget = formData.get("budget");
+  console.log(formData);
   if (!imgSrc || !placeName || country || !city || !category || !tags) {
-    return json({
-      error: "something wrong",
+    return badRequest({
+      errorMsg: "something wrong",
+    });
+  }
+  if (
+    typeof placeName !== "string" ||
+    typeof country !== "string" ||
+    typeof city !== "string" ||
+    typeof category !== "string" ||
+    typeof tags !== "string"
+  ) {
+    return badRequest({
+      errorMsg: `Form not submitted correctly.`,
     });
   }
   const newPlace = await prisma.place.create({

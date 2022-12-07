@@ -1,5 +1,12 @@
 import type { Place } from "@prisma/client";
-import { MdMuseum, MdPark } from "react-icons/md";
+import {
+  MdArrowDownward,
+  MdArrowUpward,
+  MdMuseum,
+  MdPark,
+} from "react-icons/md";
+import { generateScoreVisual } from "~/utils/generateScoreBars";
+import ButtonAsLink from "./ButtonAsLink";
 
 type Props = {
   place: Place;
@@ -39,15 +46,44 @@ const HomePlace = ({ place }: Props) => {
           </div>
         </div>
         <div className="w-4/5 h-1/4 m-3 absolute font-bold bg-gray-200 opacity-60 rounded-md p-4">
-          <h3 className="text-center w-full">{place.name}</h3>
+          <h3 className="text-center w-full grid place-items-center">
+            {place.name}
+          </h3>
           <div className="mt-2">
-            <p>Affordability: {place.costRating}</p>
-            <p>Safety: {place.safetyRating}</p>
-            <p>Accessibility: {place.accessibilityRating}</p>
-            <p>Overall: {place.overallRating}</p>
+            <div className="mt-2 w-full flex flex-col items-start justify-start">
+              <div className="flex items-center justify-start w-full">
+                <div className="w-1/2">
+                  <p>Affordability: </p>
+                </div>
+                <div className="w-1/2">
+                  <p>{place.costRating}</p>
+                </div>
+              </div>
+              <div className="flex items-center justify-around w-full">
+                <div className="w-1/2">
+                  <p>Safety: </p>
+                </div>
+                <div className="w-1/2">
+                  <p>{generateScoreVisual(place.safetyRating)}</p>
+                </div>
+              </div>
+              <div className="flex items-center justify-around w-full">
+                <div className="w-1/2">
+                  <p>Accessibility: </p>
+                </div>
+                <div className="w-1/2">
+                  <p>{generateScoreVisual(place.accessibilityRating)}</p>
+                </div>
+              </div>
+              <p>Overall: {place.overallRating}</p>
+            </div>
+            <div className="w-1/2">
+              <ButtonAsLink to={place.id}>Details</ButtonAsLink>
+            </div>
           </div>
         </div>
       </div>
+      {/* Large screen version */}
       <div className="hidden sm:flex items-center justify-around p-3 w-full shadow-md my-2 rounded-md h-[300px]">
         <div className="w-[30%] h-full">
           <div
@@ -64,12 +100,50 @@ const HomePlace = ({ place }: Props) => {
           </div>
         </div>
         <div className="w-[35%] h-full flex flex-col items-start justify-around ">
-          <h3 className="text-center w-full">{place.name}</h3>
-          <div className="mt-2">
-            <p>Affordability: {place.costRating}</p>
-            <p>Safety: {place.safetyRating}</p>
-            <p>Accessibility: {place.accessibilityRating}</p>
+          <div>
+            <h3 className="text-center w-full">{place.name}</h3>
+          </div>
+          <div className="mt-2 w-full flex flex-col items-start justify-start">
+            <div className="flex items-center justify-start w-full">
+              <div className="w-1/2">
+                <p>Affordability: </p>
+              </div>
+              <div className="w-1/2">
+                <p>{place.costRating}</p>
+              </div>
+            </div>
+            <div className="flex items-center justify-around w-full">
+              <div className="w-1/2">
+                <p>Safety: </p>
+              </div>
+              <div className="w-1/2">
+                <p>{generateScoreVisual(place.safetyRating)}</p>
+              </div>
+            </div>
+            <div className="flex items-center justify-around w-full">
+              <div className="w-1/2">
+                <p>Accessibility: </p>
+              </div>
+              <div className="w-1/2">
+                <p>{generateScoreVisual(place.accessibilityRating)}</p>
+              </div>
+            </div>
             <p>Overall: {place.overallRating}</p>
+          </div>
+          <div className="flex items-center justify-between w-full">
+            <div>
+              <ButtonAsLink to={`places/${place.id}`}>Details</ButtonAsLink>
+            </div>
+            <div className="flex items-center justify-center">
+              <span className="flex items-center justify-center">
+                <MdArrowUpward size={25} color="green" />
+                <span>{place.upvotes}</span>
+              </span>
+              <span className="flex items-center justify-center">
+                <MdArrowDownward size={25} color="red" />
+                <span>{place.downvotes}</span>
+              </span>
+            </div>
           </div>
         </div>
         <div className="flex flex-col items-start justify-around w-[28%] h-full">

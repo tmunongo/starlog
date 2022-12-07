@@ -49,7 +49,7 @@ const HomeLayout = ({ children }: Props) => {
             </LinkButtonElement>
           </div>
         ) : (
-          <ButtonAsLink to="/login">Not Logged In</ButtonAsLink>
+          <ButtonAsLink to="login">Not Logged In</ButtonAsLink>
         )}
       </div>
       {/* Side menu toggle button */}

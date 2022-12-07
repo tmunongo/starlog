@@ -20,7 +20,7 @@ const UserInfo = (props: Props) => {
       {data.user ? (
         // Will be replaced with a profile icon
         <div className="flex justify-around items-center">
-          <span className="mx-2 bg-myr rounded-md p-2 cursor-grab">
+          <span className="mx-2 bg-myr rounded-md p-2">
             <Form
               action="/logout"
               method="post"
@@ -36,7 +36,7 @@ const UserInfo = (props: Props) => {
           </LinkButtonElement>
         </div>
       ) : (
-        <ButtonAsLink to="/login">Not Logged In</ButtonAsLink>
+        <ButtonAsLink to="login">Not Logged In</ButtonAsLink>
       )}
     </div>
   );

@@ -1,10 +1,13 @@
-import { Link } from "@remix-run/react";
+import { Place } from "@prisma/client";
+import { Link, useLoaderData } from "@remix-run/react";
 import { motion } from "framer-motion";
+import { getUser } from "~/utils/login.server";
 
 type Props = {
   elem: {
     content: string;
     location: string;
+    protected: boolean;
     id: number;
   };
 };
@@ -26,7 +29,14 @@ const variants = {
   },
 };
 
+type LoaderData = {
+  user: Awaited<ReturnType<typeof getUser>>;
+  placeListItems: Place[];
+};
+
 export const NavMenuItem = ({ elem }: Props) => {
+  const data = useLoaderData<LoaderData>() as unknown as LoaderData;
+
   return (
     <motion.li
       variants={variants}
@@ -34,7 +44,11 @@ export const NavMenuItem = ({ elem }: Props) => {
       whileTap={{ scale: 0.95 }}
     >
       <span className="text-lg m-2">
-        <Link to={elem.location}>{elem.content}</Link>
+        {data.user && elem.protected ? (
+          <Link to={elem.location}>{elem.content}</Link>
+        ) : (
+          <Link to={elem.location}>{elem.content}</Link>
+        )}
       </span>
     </motion.li>
   );

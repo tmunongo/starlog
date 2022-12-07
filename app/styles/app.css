@@ -617,6 +617,10 @@ video {
   display: flex;
 }
 
+.grid {
+  display: grid;
+}
+
 .hidden {
   display: none;
 }
@@ -669,6 +673,10 @@ video {
   height: 3rem;
 }
 
+.h-4 {
+  height: 1rem;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -719,6 +727,10 @@ video {
 
 .flex-col {
   flex-direction: column;
+}
+
+.place-items-center {
+  place-items: center;
 }
 
 .items-start {
@@ -1140,6 +1152,10 @@ aside {
   .md\:mx-\[20\%\] {
     margin-left: 20%;
     margin-right: 20%;
+  }
+
+  .md\:h-5 {
+    height: 1.25rem;
   }
 
   .md\:w-1\/4 {
