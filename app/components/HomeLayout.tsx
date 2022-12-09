@@ -78,11 +78,11 @@ const HomeLayout = ({ children }: Props) => {
         {/* <div className="absolute top-2 left-2 md:left-12 md:top-6 p-2 bg-gray-400 rounded-full"> */}
         {/* </div> */}
 
-        <div className="bg-hero-image bg-center bg-cover  text-white flex items-end justify-end h-[75vh] w-full">
+        <div className="bg-hero-image bg-center bg-cover  text-white flex items-end justify-end h-[65vh] w-full">
           {/* add login check */}
           {data.user ? <ContributeBannerBox /> : <JoinBannerBox />}
         </div>
-        <div className="bg-mintgreen">{children}</div>
+        <div className="bg-mintgreen w-full">{children}</div>
       </div>
     </>
   );

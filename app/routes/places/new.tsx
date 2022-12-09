@@ -35,6 +35,10 @@ const badRequest = (data: ActionData) => json(data, { status: 400 });
 export const loader: LoaderFunction = async ({ request }) => {
   const user = await getUser(request);
 
+  if (!user) {
+    return redirect("/login");
+  }
+
   const data: LoaderData = {
     user,
   };

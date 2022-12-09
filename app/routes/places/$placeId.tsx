@@ -40,7 +40,22 @@ const PlaceDetailsPage = (props: Props) => {
 
   return (
     <HomeLayout>
-      <p>Place details will be here</p>
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-around md:justify-start m-2 md:mx-[10%] p-2 w-full">
+        <div className="w-full md:w-1/3 p-2">
+          <div className="rounded-md h-80 w-48 flex flex-col items-center justify-around bg-gray-200 shadow-md p-2">
+            <img
+              src={data.placeItem.coverImage}
+              alt={data.placeItem.name}
+              className="rounded-md"
+            />
+            <div className="bg-mintgreen p-1 rounded-lg">
+              <p>{data.placeItem.city},</p>
+              <p>{data.placeItem.country}</p>
+            </div>
+          </div>
+        </div>
+        <div className="w-full md:w-2/3"></div>
+      </div>
     </HomeLayout>
   );
 };

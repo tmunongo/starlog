@@ -35,11 +35,37 @@ export const action: ActionFunction = async ({ request }) => {
 
 export default function Index() {
   const [filter, setFilter] = useState<string>("");
+  const [filterCriteria, setFilterCriteria] = useState<string>("City");
   const data = useLoaderData<LoaderData>() as unknown as LoaderData;
   // let isLoggedIn = false;
 
   const handleFilter = (value: string) => {
     setFilter(value);
+  };
+
+  const getFilterCategory = (value: string) => {
+    switch (value) {
+      case "Category":
+        return getUnique(data.placeListItems).map((item, index) => (
+          <span key={index} onClick={() => handleFilter(item.category)}>
+            <FilterItem>{item.category}</FilterItem>
+          </span>
+        ));
+      case "Country":
+        return getUnique(data.placeListItems).map((item, index) => (
+          <span key={index} onClick={() => handleFilter(item.country)}>
+            <FilterItem>{item.country}</FilterItem>
+          </span>
+        ));
+      case "City":
+        return getUnique(data.placeListItems).map((item, index) => (
+          <span key={index} onClick={() => handleFilter(item.city)}>
+            <FilterItem>{item.city}</FilterItem>
+          </span>
+        ));
+      default:
+        return;
+    }
   };
 
   return (
@@ -52,14 +78,13 @@ export default function Index() {
           </p>
           <div className="w-full border-y h-14 flex items-center justify-start">
             <span className="pl-2 text-lg">
+              {/* Filter must be a drop down menu */}
               Filter:
               <span onClick={() => handleFilter("")}>
                 <FilterItem>All</FilterItem>
               </span>
-              {getUnique(data.placeListItems).map((item, index) => (
-                <span key={index} onClick={() => handleFilter(item.category)}>
-                  <FilterItem>{item.category}</FilterItem>
-                </span>
+              {getFilterCategory(filterCriteria)?.map((item, index) => (
+                <span key={index}>{item}</span>
               ))}
             </span>
           </div>
@@ -69,7 +94,9 @@ export default function Index() {
                   <HomePlace key={index} place={item} />
                 ))
               : data.placeListItems
-                  .filter((place) => place.category == filter)
+                  .filter(
+                    (place) => place[filterCriteria.toLowerCase()] == filter
+                  )
                   .map((item, index) => <HomePlace key={index} place={item} />)}
           </div>
         </div>
