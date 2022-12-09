@@ -1,14 +1,22 @@
+import { Listbox } from "@headlessui/react";
 import type { Place } from "@prisma/client";
 import type { ActionFunction, LoaderFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import prisma from "prisma/db.server";
 import { useState } from "react";
+import { MdArrowDropDown, MdCheck } from "react-icons/md";
 import FilterItem from "~/components/FilterItem";
 import HomeLayout from "~/components/HomeLayout";
 import HomePlace from "~/components/HomePlace";
 import { getUnique } from "~/utils/getUnique";
 import { getUser, logout } from "../utils/login.server";
+
+const filterOptions = [
+  { label: "Country", value: "country" },
+  { label: "City", value: "city" },
+  { label: "Category", value: "category" },
+];
 
 type LoaderData = {
   user: Awaited<ReturnType<typeof getUser>>;
@@ -77,9 +85,45 @@ export default function Index() {
             Pick a Category to Find What You're Looking For
           </p>
           <div className="w-full border-y h-14 flex items-center justify-start">
-            <span className="pl-2 text-lg">
+            <span className="pl-2 text-lg flex items-center justify-start w-2/3">
               {/* Filter must be a drop down menu */}
-              Filter:
+              <span className="flex flex-col items-center justify-end ml-1 mr-4">
+                <Listbox
+                  as="div"
+                  value={filterCriteria}
+                  onChange={setFilterCriteria}
+                >
+                  <Listbox.Button className="flex items-center justify-around w-full border border-black rounded-lg p-1 ">
+                    {filterCriteria}
+                    <span>
+                      <MdArrowDropDown size={15} />
+                    </span>
+                  </Listbox.Button>
+                  <Listbox.Options className="absolute bg-mintgreen z-[100] p-2 rounded-md">
+                    {filterOptions.map((item, index) => {
+                      return (
+                        <Listbox.Option
+                          key={index}
+                          value={item.label}
+                          className="ui-active:bg-blue-500 ui-active:text-white ui-not-active:bg-white ui-not-active:text-black cursor-grab p-2 border-y-[0.5px] border-gray-300"
+                        >
+                          {({ selected, active }) => (
+                            <span
+                              className={`${selected}
+                            ? "text-white bg-blue-600"
+                            : "text-gray-900" flex items-center justify-between`}
+                            >
+                              {" "}
+                              {selected && <MdCheck size={15} />}
+                              {item.label}
+                            </span>
+                          )}
+                        </Listbox.Option>
+                      );
+                    })}
+                  </Listbox.Options>
+                </Listbox>
+              </span>
               <span onClick={() => handleFilter("")}>
                 <FilterItem>All</FilterItem>
               </span>

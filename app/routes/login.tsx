@@ -292,7 +292,9 @@ const Login = (props: Props) => {
           )}
         </form>
         <div className="flex flex-col items-center justify-between mt-5 p-2 w-4/5">
-          <p className="text-lg">Use Your Social Account to Log In</p>
+          <p className="text-lg">
+            Use Your Social Account to Log In (Coming Soon)
+          </p>
           <div className="flex items-center justify-between w-3/5 my-4">
             <span className="">
               <AiFillFacebook size={40} color="#00f" />
