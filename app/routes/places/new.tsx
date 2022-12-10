@@ -121,8 +121,8 @@ const NewPlace = (props: Props) => {
   return (
     <PlacesLayout>
       <div className="mx-1 md:mx-[20%]">
-        <h2 className="my-2">Add a new location</h2>
-        <p className="my-2 text-gray-600">
+        <h2 className="my-2 text-center md:text-start">Add a new location</h2>
+        <p className="my-2 text-gray-600 text-center md:text-start">
           Share your favorite place with the Seven Wonders community.
         </p>
         <div>
@@ -170,7 +170,7 @@ const NewPlace = (props: Props) => {
                   Budget
                 </label>
                 <label htmlFor="image" className="p-2 m-1 md:m-4">
-                  <MdCamera size={20} />
+                  <MdCamera size={25} />
                 </label>
               </div>
               <div className="flex flex-col items-start justify-start w-[65%] md:w-[40%]">
@@ -223,7 +223,7 @@ const NewPlace = (props: Props) => {
               </div>
             </div>
             <div className="flex flex-col items-start justify-center">
-              <button type="submit" className="p-2 bg-myr rounded-md">
+              <button type="submit" className="p-2 bg-myr rounded-md my-2">
                 Submit
               </button>
               <span className="italic text-gray-600">

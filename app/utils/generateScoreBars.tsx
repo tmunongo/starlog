@@ -22,7 +22,7 @@ export const generateScoreVisual = (score: any) => {
       <div
         className={`h-4 md:h-5 bg-[${selectColor(
           score
-        )}] rounded-xl border border-black m-2`}
+        )}] rounded-xl border border-gray-400 m-1 md:m-2`}
         style={style}
       ></div>
     </div>

@@ -5,6 +5,7 @@ import {
   MdMuseum,
   MdPark,
 } from "react-icons/md";
+import { calcOverall } from "~/utils/calcOverall";
 import { generateScoreVisual } from "~/utils/generateScoreBars";
 import ButtonAsLink from "./ButtonAsLink";
 
@@ -75,7 +76,24 @@ const HomePlace = ({ place }: Props) => {
                   <p>{generateScoreVisual(place.accessibilityRating)}</p>
                 </div>
               </div>
-              <p>Overall: {place.overallRating}</p>
+              <div className="flex items-center justify-around w-full">
+                <div className="w-1/2">
+                  <p>Overall: </p>
+                </div>
+                <div className="w-1/2">
+                  <p>
+                    {generateScoreVisual(
+                      calcOverall(
+                        place.upvotes,
+                        place.downvotes,
+                        place.costRating,
+                        place.safetyRating,
+                        place.accessibilityRating
+                      )
+                    )}
+                  </p>
+                </div>
+              </div>
             </div>
             <div className="w-1/2">
               <ButtonAsLink to={place.id}>Details</ButtonAsLink>
@@ -128,7 +146,24 @@ const HomePlace = ({ place }: Props) => {
                 <p>{generateScoreVisual(place.accessibilityRating)}</p>
               </div>
             </div>
-            <p>Overall: {place.overallRating}</p>
+            <div className="flex items-center justify-around w-full">
+              <div className="w-1/2">
+                <p>Overall: </p>
+              </div>
+              <div className="w-1/2">
+                <p>
+                  {generateScoreVisual(
+                    calcOverall(
+                      place.upvotes,
+                      place.downvotes,
+                      place.costRating,
+                      place.safetyRating,
+                      place.accessibilityRating
+                    )
+                  )}
+                </p>
+              </div>
+            </div>
           </div>
           <div className="flex items-center justify-between w-full">
             <div>

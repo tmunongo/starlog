@@ -99,13 +99,13 @@ export default function Index() {
                       <MdArrowDropDown size={15} />
                     </span>
                   </Listbox.Button>
-                  <Listbox.Options className="absolute bg-mintgreen z-[100] p-2 rounded-md">
+                  <Listbox.Options className="absolute bg-white z-[100] p-2 rounded-lg border border-black mt-2">
                     {filterOptions.map((item, index) => {
                       return (
                         <Listbox.Option
                           key={index}
                           value={item.label}
-                          className="ui-active:bg-blue-500 ui-active:text-white ui-not-active:bg-white ui-not-active:text-black cursor-grab p-2 border-y-[0.5px] border-gray-300"
+                          className="ui-active:bg-blue-500 ui-active:text-white ui-not-active:bg-white ui-not-active:text-black cursor-grab p-2 border-b-[0.5px] border-gray-300"
                         >
                           {({ selected, active }) => (
                             <span

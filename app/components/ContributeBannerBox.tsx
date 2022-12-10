@@ -9,7 +9,7 @@ const ContributeBannerBox = (props: Props) => {
         Add to our ever-growing list of amazing destinations.
       </p>
       <div className="text-left">
-        <ButtonAsLink to="/new">Join</ButtonAsLink>
+        <ButtonAsLink to="/new">Add</ButtonAsLink>
       </div>
     </div>
   );
