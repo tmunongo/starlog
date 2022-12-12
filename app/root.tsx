@@ -9,6 +9,8 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import styles from "./styles/app.css";
+import clsx from 'clsx';
+import { ThemeProvider, useTheme } from "./utils/theme-provider";
 
 export function links() {
   return [
@@ -23,9 +25,11 @@ export const meta: MetaFunction = () => ({
   viewport: "width=device-width,initial-scale=1",
 });
 
-export default function App() {
+function App() {
+  const [theme] = useTheme();
+
   return (
-    <html lang="en">
+    <html lang="en" className={clsx(theme)}>
       <head>
         <Meta />
         <Links />
@@ -38,4 +42,12 @@ export default function App() {
       </body>
     </html>
   );
+}
+
+export default function AppWithProviders() {
+  return (
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
+  )
 }

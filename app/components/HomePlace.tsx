@@ -102,7 +102,7 @@ const HomePlace = ({ place }: Props) => {
         </div>
       </div>
       {/* Large screen version */}
-      <div className="hidden sm:flex items-center justify-around p-3 w-full shadow-md my-2 rounded-md h-[300px]">
+      <div className="hidden bg-silvery sm:flex items-center justify-around p-3 w-full shadow-md my-2 rounded-md h-[300px]">
         <div className="w-[30%] h-full">
           <div
             style={{

@@ -28,35 +28,42 @@ const HomeLayout = ({ children }: Props) => {
 
   return (
     <>
-      {/* user profile and log out buttons */}
-      <div className="absolute top-2 right-2 md:right-12">
-        {data.user ? (
-          // Will be replaced with a profile icon
-          <div className="flex justify-around items-center">
-            <span className="mx-2 bg-myr rounded-md p-2 cursor-grab">
-              <Form
-                action="/logout"
-                method="post"
-                className="flex justify-center items-center"
-              >
-                <button type="submit">
-                  <AiOutlinePoweroff size={25} />
-                </button>
-              </Form>
-            </span>
-            <LinkButtonElement to="/profile">
-              <span>Hi, {data.user.username}</span>
-            </LinkButtonElement>
-          </div>
-        ) : (
-          <ButtonAsLink to="login">Not Logged In</ButtonAsLink>
-        )}
-      </div>
-      {/* Side menu toggle button */}
-      <div id="nav-btn-container">
-        <button id="nav-button" onClick={toggleOpen}>
-          {isOpen ? <MdClose size={25} /> : <MdMenu size={25} />}
-        </button>
+      <div className="absolute top-0 w-screen bg-white dark:bg-greey h-16">
+        {/* user profile and log out buttons */}
+        <div className="absolute top-3 right-2 md:right-12">
+          {data.user ? (
+            // Will be replaced with a profile icon
+            <div className="flex justify-around items-center">
+              <span className="mx-2 bg-greeny dark:bg-oranj rounded-md p-2 cursor-grab">
+                <Form
+                  action="/logout"
+                  method="post"
+                  className="flex justify-center items-center"
+                >
+                  <button type="submit">
+                    <AiOutlinePoweroff size={20} />
+                  </button>
+                </Form>
+              </span>
+              <LinkButtonElement to="/profile">
+                <span>Hi, {data.user.username}</span>
+              </LinkButtonElement>
+            </div>
+          ) : (
+            <ButtonAsLink to="login">Not Logged In</ButtonAsLink>
+          )}
+        </div>
+        {/* Side menu toggle button */}
+        <div id="nav-btn-container">
+          <button id="nav-button" onClick={toggleOpen}>
+            {isOpen ? <MdClose size={25} color={"#da4620"} /> : <MdMenu size={25} color={"#da4620"} />}
+          </button>
+        </div>
+        <div className="absolute left-20 top-3 bg-greeny dark:bg-oranj rounded-full p-2 px-3">
+          <a href="/">
+            <span className="text-base font-semibold">places.io</span>
+          </a>
+        </div>
       </div>
       {/* side menu */}
       <AnimatePresence>
@@ -74,15 +81,11 @@ const HomeLayout = ({ children }: Props) => {
         )}
       </AnimatePresence>
       <div className="flex flex-col items-center justify-start w-screen min-h-screen">
-        {/* <div className="bg-gradient-to-r from-sky-500 to-indigo-500 text-white flex items-end justify-end h-[75vh] w-full"> */}
-        {/* <div className="absolute top-2 left-2 md:left-12 md:top-6 p-2 bg-gray-400 rounded-full"> */}
-        {/* </div> */}
-
         <div className="bg-hero-image bg-center bg-cover  text-white flex items-end justify-end h-[65vh] w-full">
           {/* add login check */}
           {data.user ? <ContributeBannerBox /> : <JoinBannerBox />}
         </div>
-        <div className="bg-mintgreen w-full">{children}</div>
+        <div className="bg-white dark:bg-greey w-full">{children}</div>
       </div>
     </>
   );

@@ -178,39 +178,39 @@ const NewPlace = (props: Props) => {
                   type="text"
                   name="name"
                   placeholder="Hero's Acre"
-                  className="rounded-md h-12 w-full md:w-2/3 p-2 m-1 md:m-4"
+                  className="border rounded-md h-12 w-full md:w-2/3 p-2 m-1 md:m-4"
                 />
                 <input
                   type="text"
                   name="country"
                   placeholder="Zimbabwe"
-                  className="rounded-md h-12 w-full md:w-2/3 p-2 m-1 md:m-4"
+                  className="border rounded-md h-12 w-full md:w-2/3 p-2 m-1 md:m-4"
                 />
                 <input
                   type="text"
                   name="city"
                   placeholder="Harare"
-                  className="rounded-md h-12 w-full md:w-2/3 p-2 m-1 md:m-4"
+                  className="border rounded-md h-12 w-full md:w-2/3 p-2 m-1 md:m-4"
                 />
                 <input
                   type="text"
                   name="category"
                   placeholder="Historical Site"
-                  className="rounded-md h-12 w-full md:w-2/3 p-2 m-1 md:m-4"
+                  className="border rounded-md h-12 w-full md:w-2/3 p-2 m-1 md:m-4"
                 />
                 <input
                   type="text"
                   name="tags"
                   autoComplete="true"
                   placeholder="Family Friendly, Live Band, 24/7"
-                  className="rounded-md h-12 w-full md:w-2/3 p-2 m-1 md:m-4"
+                  className="border rounded-md h-12 w-full md:w-2/3 p-2 m-1 md:m-4"
                 />
                 <input
                   type="number"
                   name="budget"
                   autoComplete="true"
                   placeholder="$39.99"
-                  className="rounded-md h-12 w-full md:w-2/3 p-2 m-1 md:m-4"
+                  className="border rounded-md h-12 w-full md:w-2/3 p-2 m-1 md:m-4"
                 />
                 <input
                   id="img-field"

@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./app/**/*.{js,ts,jsx,tsx}"],
+  darkMode: "class",
   theme: {
     extend: {
       backgroundImage: {
@@ -11,6 +12,10 @@ module.exports = {
         mintgreen: "#EDF4ED",
         myr: "#FFBA49",
         babypowder: "#F0F4EF",
+        oranj: "#ff7502",
+        greey: "#23292E",
+        greeny: "#87c423",
+        silvery: "#dce9eb"
       },
     },
   },

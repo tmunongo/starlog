@@ -18,15 +18,15 @@ h3 {
 /* body */
 body {
   /* font-family: "Roboto", sans-serif; */
-  @apply font-["Roboto"]  transition-all duration-500;
+  @apply font-["Roboto"]  transition-all duration-500 max-w-full;
 }
 
 aside {
-  @apply fixed w-[300px] h-screen bg-mintgreen z-40;
+  @apply fixed w-[300px] h-screen bg-white dark:bg-greey z-40;
 }
 
 #nav-container {
-  @apply my-16 mx-6;
+  @apply my-16 mx-6 dark:text-white;
 }
 
 #nav-container ul {
@@ -34,7 +34,7 @@ aside {
 }
 
 #nav-button {
-  @apply fixed bg-myr z-50 rounded-full cursor-pointer m-3 md:m-5 border-none px-2 md:px-4 py-2 md:py-4;
+  @apply sticky bg-white dark:bg-greey z-50 rounded-full cursor-pointer m-3 border-none px-2 md:px-2 py-2;
 }
 
 #nav-btn-container {

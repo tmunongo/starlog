@@ -19,13 +19,18 @@ const PlacesLayout = ({ children }: Props) => {
   const [isOpen, toggleOpen] = useCycle(false, true);
 
   return (
-    <div className="bg-babypowder">
-      <div className="h-20 bg-[#1C2541]">
+    <div className="bg-white dark:bg-greey">
+      <div className="h-16 bg-[#1C2541] dark:[#353e46]">
+        <div className="absolute left-20 top-3 md:top-4 bg-greeny dark:bg-oranj rounded-full p-2 px-3">
+          <a href="/">
+            <span>places.io</span>
+          </a>
+        </div>
         <UserInfo />
         {/* Side menu toggle button */}
-        <div className=" absolute top-2 left-2 md:left-4 bg-myr rounded-full z-50">
-          <button onClick={toggleOpen} className="p-2 md:p-4">
-            {isOpen ? <MdClose size={25} /> : <MdMenu size={25} />}
+        <div className=" absolute top-3 left-2 md:left-4 rounded-full z-50">
+          <button onClick={toggleOpen} className="p-2 md:p-3">
+            {isOpen ? <MdClose size={25} color={"#fe772b"} /> : <MdMenu size={25} color={"#fe772b"} />}
           </button>
         </div>
         {/* side menu */}
@@ -44,8 +49,8 @@ const PlacesLayout = ({ children }: Props) => {
           )}
         </AnimatePresence>
       </div>
-      <div className="min-h-screen w-full">
-        <div className="h-6 bg-[#1C2541]"></div>
+      <div className="min-h-screen w-full dark:text-white">
+        <div className="h-6 bg-[#C7DBE6] dark:bg-[#353e46]"></div>
         {children}
       </div>
     </div>
