@@ -50,7 +50,7 @@ const HomeLayout = ({ children }: Props) => {
               </LinkButtonElement>
             </div>
           ) : (
-            <ButtonAsLink to="login">Not Logged In</ButtonAsLink>
+            <ButtonAsLink to="login">Log In</ButtonAsLink>
           )}
         </div>
         {/* Side menu toggle button */}
@@ -59,9 +59,9 @@ const HomeLayout = ({ children }: Props) => {
             {isOpen ? <MdClose size={25} color={"#da4620"} /> : <MdMenu size={25} color={"#da4620"} />}
           </button>
         </div>
-        <div className="absolute left-20 top-3 bg-greeny dark:bg-oranj rounded-full p-2 px-3">
+        <div className="absolute left-20 top-3 bg-greeny dark:bg-oranj rounded-full p-2 p2-3 px-3">
           <a href="/">
-            <span className="text-base font-semibold">places.io</span>
+            <span className="pt-2 text-base text-base md:text-lg uppercase font-semibold">essential.places</span>
           </a>
         </div>
       </div>
