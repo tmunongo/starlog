@@ -15,6 +15,9 @@ model User {
   username       String   @unique
   email          String   @unique
   hashedPassword String?
+  fullName       String?
+  avatar         String?
+  about          String?
   // places that a user has contributed to the community
   submissions    Place[]  @relation("Places")
   // places that a user has visited
