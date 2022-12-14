@@ -209,7 +209,7 @@ const NewPlace = (props: Props) => {
                   type="number"
                   name="budget"
                   autoComplete="true"
-                  placeholder="$39.99"
+                  placeholder="40"
                   className="border rounded-md h-12 w-full md:w-2/3 p-2 m-1 md:m-4"
                 />
                 <input

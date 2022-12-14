@@ -86,7 +86,7 @@ export default function Index() {
             <p className="text-slate-600 dark:text-white text-base md:text-lg">
               Pick a Category to Find What You're Looking For
             </p>
-            <div className="w-full border-y border-oranj h-14 flex items-center justify-start">
+            <div className="w-full border-y-2 border-oranj h-14 flex items-center justify-start">
               <span className="pl-2 text-lg flex items-center justify-start w-2/3">
                 {/* Filter must be a drop down menu */}
                 <span className="flex flex-col items-center justify-end ml-1 mr-4">

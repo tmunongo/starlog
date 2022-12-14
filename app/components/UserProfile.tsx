@@ -25,7 +25,7 @@ const UserProfile = (props: Props) => {
           <p>My Bucketlist: {data.dbUser.wishlistIds.length}</p>
         </div>
 
-          <ButtonAsLink to="profile/edit">Edit Your Profile</ButtonAsLink>
+          <ButtonAsLink to={`/profile/edit/${data.dbUser.id}`}>Edit Your Profile</ButtonAsLink>
       </div>
     </div>
   )
