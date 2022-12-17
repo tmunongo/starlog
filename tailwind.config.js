@@ -4,8 +4,13 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      fontFamily: {
+        "comic": ['"Comic Neue"'],
+      },
       backgroundImage: {
         "hero-image": "url('../../assets/luca-bravo-O453M2Liufs-unsplash.jpg')",
+        "hero-dark": "url('../../assets/banner-dark.svg')",
+        "hero-light": "url('../../assets/banner-light.svg')",
       },
       colors: {
         seashell: "#FFF3F0",
@@ -13,9 +18,9 @@ module.exports = {
         myr: "#FFBA49",
         babypowder: "#F0F4EF",
         oranj: "#ff7502",
-        greey: "#23292E",
+        greey: "#282929",
         greeny: "#87c423",
-        silvery: "#dce9eb",
+        silvery: "#243F56",
         subtext: "#E7E5DF"
       },
     },

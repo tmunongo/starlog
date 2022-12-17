@@ -20,15 +20,17 @@ type LoaderData = {
   placeListItems: Place[];
 };
 
+const array = ["1", "2", "3", "4", "5"];
+
 const HomeLayout = ({ children }: Props) => {
   const [isOpen, toggleOpen] = useCycle(false, true);
   // const containerRef = useRef(null);
   // const { height } = useDimensions(containerRef);
   const data = useLoaderData<LoaderData>() as unknown as LoaderData;
-
+  // const [currentIndex, setCurrentIndex] = useState(0);
   return (
     <>
-      <div className="absolute top-0 w-screen bg-white dark:bg-greey h-16">
+      <div className="absolute top-0 w-screen h-16">
         {/* user profile and log out buttons */}
         <div className="absolute top-3 right-2 md:right-12">
           {data.user ? (
@@ -61,7 +63,7 @@ const HomeLayout = ({ children }: Props) => {
         </div>
         <div className="absolute left-20 top-3 bg-greeny dark:bg-oranj rounded-full p-2 px-3">
           <a href="/">
-            <span className="pt-2 text-base text-base uppercase font-semibold">essential.places</span>
+            <span className="pt-2 font-comic text-base uppercase font-semibold">essential.places</span>
           </a>
         </div>
       </div>
@@ -80,14 +82,33 @@ const HomeLayout = ({ children }: Props) => {
           </motion.aside>
         )}
       </AnimatePresence>
-      <div className="flex flex-col items-center justify-start w-screen min-h-screen">
-        <div className="bg-hero-image bg-center bg-cover  text-white flex items-end justify-end h-[65vh] w-full">
-          {/* add login check */}
-          {data.user ? <ContributeBannerBox /> : <JoinBannerBox />}
+      {/* Banner */}
+      <div className="flex bg-hero-light dark:bg-hero-dark flex-col items-center justify-start w-screen min-h-screen">
+        <div className="bg-hero-light dark:bg-hero-dark bg-bottom bg-cover flex flex-col items-start justify-center h-[65vh] w-full">
+           {/* add login check  
+           {data.user ? <ContributeBannerBox /> : <JoinBannerBox />} */}
+            <h2 className="capitalize text-black dark:text-white w-full px-[5%] md:px-[15%]">A great big world awaits</h2>
+            <Form method='get' className="text-gray-700 :w
+            flex items-center justify-start w-full px-[5%] md:px-[15%] my-4">
+              <input name="search" placeholder="Try 'Addis Ababa'" className="p-2 w-1/2 md:w-2/5 border border-black dark:border-none" />
+              <button type="submit" className="p-2 bg-oranj">Submit</button>
+            </Form>
         </div>
-        <div className="bg-white dark:bg-greey w-full">{children}</div>
-      </div>
+        <div className="bg-seashell dark:bg-greey w-full">{children}</div>
+      </div> 
+      {/* <div className="flex bg-[#f1f1f1] flex-nowrap overflow-hidden">
+        <div className="h-[65vh] w-full flex items-center justify-center transition-all">
+
+        </div>
+        <div className="h-[65vh] w-full flex items-center justify-center transition-all">
+
+        </div>
+        <div className="h-[65vh] w-full flex items-center justify-center transition-all">
+
+        </div> 
+      </div> */}
     </>
+
   );
 };
 

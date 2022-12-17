@@ -616,14 +616,14 @@ video {
   margin-right: 0.5rem;
 }
 
-.my-1 {
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
-}
-
 .my-4 {
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+.my-1 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
 }
 
 .mx-3 {
@@ -819,6 +819,10 @@ video {
   flex-direction: column;
 }
 
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
 .place-items-center {
   place-items: center;
 }
@@ -926,7 +930,7 @@ video {
 
 .bg-silvery {
   --tw-bg-opacity: 1;
-  background-color: rgb(220 233 235 / var(--tw-bg-opacity));
+  background-color: rgb(36 63 86 / var(--tw-bg-opacity));
 }
 
 .bg-greeny {
@@ -942,6 +946,16 @@ video {
 .bg-oranj {
   --tw-bg-opacity: 1;
   background-color: rgb(255 117 2 / var(--tw-bg-opacity));
+}
+
+.bg-seashell {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 243 240 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#f1f1f1\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(241 241 241 / var(--tw-bg-opacity));
 }
 
 .bg-gray-300 {
@@ -994,16 +1008,16 @@ video {
   background-color: rgb(255 186 73 / var(--tw-bg-opacity));
 }
 
-.bg-hero-image {
-  background-image: url('../../assets/luca-bravo-O453M2Liufs-unsplash.jpg');
+.bg-hero-light {
+  background-image: url('../../assets/banner-light.svg');
 }
 
 .bg-cover {
   background-size: cover;
 }
 
-.bg-center {
-  background-position: center;
+.bg-bottom {
+  background-position: bottom;
 }
 
 .p-2 {
@@ -1035,6 +1049,11 @@ video {
   padding-right: 0.75rem;
 }
 
+.px-\[5\%\] {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -1058,6 +1077,10 @@ video {
 
 .text-center {
   text-align: center;
+}
+
+.font-comic {
+  font-family: "Comic Neue";
 }
 
 .text-lg {
@@ -1087,6 +1110,10 @@ video {
   text-transform: uppercase;
 }
 
+.capitalize {
+  text-transform: capitalize;
+}
+
 .italic {
   font-style: italic;
 }
@@ -1096,9 +1123,9 @@ video {
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
-.text-white {
+.text-gray-700 {
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: rgb(55 65 81 / var(--tw-text-opacity));
 }
 
 .text-gray-500 {
@@ -1109,6 +1136,11 @@ video {
 .text-slate-600 {
   --tw-text-opacity: 1;
   color: rgb(71 85 105 / var(--tw-text-opacity));
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .text-gray-900 {
@@ -1124,11 +1156,6 @@ video {
 .text-gray-600 {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
-}
-
-.text-subtext {
-  --tw-text-opacity: 1;
-  color: rgb(231 229 223 / var(--tw-text-opacity));
 }
 
 .text-red-300 {
@@ -1199,6 +1226,7 @@ video {
 /* headings */
 
 h1 {
+  font-family: "Comic Neue";
   font-size: 1.875rem;
   line-height: 2.25rem;
 }
@@ -1235,7 +1263,7 @@ aside {
 
 .dark aside {
   --tw-bg-opacity: 1;
-  background-color: rgb(35 41 46 / var(--tw-bg-opacity));
+  background-color: rgb(40 41 41 / var(--tw-bg-opacity));
 }
 
 #nav-container {
@@ -1277,7 +1305,7 @@ aside {
 
 .dark #nav-button {
   --tw-bg-opacity: 1;
-  background-color: rgb(35 41 46 / var(--tw-bg-opacity));
+  background-color: rgb(40 41 41 / var(--tw-bg-opacity));
 }
 
 @media (min-width: 768px) {
@@ -1315,6 +1343,10 @@ aside {
   display: none;
 }
 
+.dark .dark\:border-none {
+  border-style: none;
+}
+
 .dark .dark\:border-oranj {
   --tw-border-opacity: 1;
   border-color: rgb(255 117 2 / var(--tw-border-opacity));
@@ -1332,7 +1364,12 @@ aside {
 
 .dark .dark\:bg-greey {
   --tw-bg-opacity: 1;
-  background-color: rgb(35 41 46 / var(--tw-bg-opacity));
+  background-color: rgb(40 41 41 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:bg-\[\#3D3E3E\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(61 62 62 / var(--tw-bg-opacity));
 }
 
 .dark .dark\:bg-\[\#353e46\] {
@@ -1343,6 +1380,10 @@ aside {
 .dark .dark\:bg-\[\#D3D0CB\] {
   --tw-bg-opacity: 1;
   background-color: rgb(211 208 203 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:bg-hero-dark {
+  background-image: url('../../assets/banner-dark.svg');
 }
 
 .dark .dark\:text-white {
@@ -1462,6 +1503,10 @@ aside {
     width: 25%;
   }
 
+  .md\:w-2\/5 {
+    width: 40%;
+  }
+
   .md\:w-\[320px\] {
     width: 320px;
   }
@@ -1545,6 +1590,11 @@ aside {
   .md\:px-6 {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+  }
+
+  .md\:px-\[15\%\] {
+    padding-left: 15%;
+    padding-right: 15%;
   }
 
   .md\:text-start {

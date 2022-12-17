@@ -4,6 +4,7 @@ import {
   MdArrowUpward,
   MdMuseum,
   MdPark,
+  MdFastfood
 } from "react-icons/md";
 import { calcOverall } from "~/utils/calcOverall";
 import { generateScoreVisual } from "~/utils/generateScoreBars";
@@ -21,6 +22,9 @@ const HomePlace = ({ place }: Props) => {
       }
       case "Historical Site": {
         return <MdPark size={20} />;
+      }
+      case "Food": {
+        return <MdFastfood size={20} />
       }
     }
   };
@@ -102,7 +106,7 @@ const HomePlace = ({ place }: Props) => {
         </div>
       </div>
       {/* Large screen version */}
-      <div className="hidden bg-silvery sm:flex items-center justify-around p-3 w-full shadow-md my-2 rounded-md h-[300px]">
+      <div className="hidden bg-white dark:bg-[#3D3E3E] sm:flex items-center justify-around p-3 w-full shadow-md my-2 rounded-md h-[300px] text-black dark:text-white">
         <div className="w-[30%] h-full">
           <div
             style={{

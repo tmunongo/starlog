@@ -1,4 +1,5 @@
 import FontStyles from "@fontsource/roboto/index.css";
+import * as ComicFont from "@fontsource/comic-neue/index.css";
 import type { MetaFunction } from "@remix-run/node";
 import {
   Links,
@@ -16,6 +17,7 @@ export function links() {
   return [
     { rel: "stylesheet", href: styles },
     { rel: "stylesheet", href: FontStyles },
+    { rel: "stylesheet", href: ComicFont },
   ];
 }
 
