@@ -11,7 +11,7 @@ cloudinary.v2.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-export const uploadImage = async (data: AsyncIterable<Uint8Array>) => {
+const uploadImage = async (data: AsyncIterable<Uint8Array>) => {
   const uploadPromise = new Promise(async (resolve, reject) => {
     const uploadStream = cloudinary.v2.uploader.upload_stream(
       {
@@ -29,3 +29,5 @@ export const uploadImage = async (data: AsyncIterable<Uint8Array>) => {
   });
   return uploadPromise;
 };
+
+export { uploadImage };

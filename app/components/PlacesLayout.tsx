@@ -20,7 +20,8 @@ const PlacesLayout = ({ children }: Props) => {
 
   return (
     <div className="bg-white dark:bg-greey">
-      <div className="h-16 bg-[#1C2541] dark:[#353e46]">
+   {/* #353e46 */} 
+      <div className="h-16 bg-[#1c2541] dark:bg-[#353e46]">
         <div className="absolute left-20 top-3 md:top-4 bg-greeny dark:bg-oranj rounded-full p-2 px-3">
           <a href="/">
             <span>places.io</span>
@@ -50,7 +51,7 @@ const PlacesLayout = ({ children }: Props) => {
         </AnimatePresence>
       </div>
       <div className="min-h-screen w-full dark:text-white">
-        <div className="h-6 bg-[#C7DBE6] dark:bg-[#353e46]"></div>
+        <div className="h-6 bg-[#C7DBE6] dark:bg-[#D3D0CB]"></div>
         {children}
       </div>
     </div>

@@ -15,7 +15,9 @@ model User {
   username       String   @unique
   email          String   @unique
   hashedPassword String?
+  createdAt      Date     @default(now())
   fullName       String?
+  joined         Date @default(now())
   avatar         String?
   about          String?
   // places that a user has contributed to the community

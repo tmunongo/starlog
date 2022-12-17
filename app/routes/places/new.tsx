@@ -56,7 +56,7 @@ export const action: ActionFunction = async ({ request }) => {
   }
 
   const uploadHandler: UploadHandler = composeUploadHandlers(
-    async ({ name, contentType, data, filename }) => {
+    async ({ name, data, filename }) => {
       if (name !== "image") {
         return undefined;
       }
@@ -66,9 +66,7 @@ export const action: ActionFunction = async ({ request }) => {
     },
     createMemoryUploadHandler()
   );
-
   const formData = await parseMultipartFormData(request, uploadHandler);
-  console.log(formData);
   const imgSrc = formData.get("image");
   const placeName = formData.get("name");
   const country = formData.get("country");
@@ -76,8 +74,8 @@ export const action: ActionFunction = async ({ request }) => {
   const category = formData.get("category");
   const tags = formData.get("tags");
   const budget = formData.get("budget");
-  console.log(formData);
-  if (!imgSrc || !placeName || country || !city || !category || !tags) {
+  // console.log();
+  if (!imgSrc || !placeName || !country || !city || !category || !tags) {
     return badRequest({
       errorMsg: "something wrong",
     });
@@ -122,14 +120,16 @@ const NewPlace = (props: Props) => {
     <PlacesLayout>
       <div className="mx-1 md:mx-[20%]">
         <h2 className="my-2 text-center md:text-start">Add a new location</h2>
-        <p className="my-2 text-gray-600 text-center md:text-start">
+        <p className="my-2 text-gray-600 dark:text-subtext text-center md:text-start">
           Share your favorite place with the Seven Wonders community.
         </p>
         <div>
-          <Form
+          <form
             method="post"
             encType="multipart/form-data"
+            
             className="flex flex-col items-center justify-around border-black rounded-md shadow-lg p-2"
+            // reloadDocument
           >
             <div className="w-full flex items-center justify-center">
               <div className="flex flex-col items-start justify-start w-[30%] md:w-[40%]">
@@ -226,12 +226,12 @@ const NewPlace = (props: Props) => {
               <button type="submit" className="p-2 bg-myr rounded-md my-2">
                 Submit
               </button>
-              <span className="italic text-gray-600">
+              <span className="italic text-gray-600 dark:text-subtext">
                 All fields are required
               </span>
             </div>
-          </Form>
-          {actionData?.errorMsg && <h2>{actionData.errorMsg}</h2>}
+          </form>
+          {actionData?.errorMsg && <p className="italic text-red-300">{actionData.errorMsg}</p>}
         </div>
       </div>
     </PlacesLayout>

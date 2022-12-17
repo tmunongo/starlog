@@ -15,7 +15,8 @@ module.exports = {
         oranj: "#ff7502",
         greey: "#23292E",
         greeny: "#87c423",
-        silvery: "#dce9eb"
+        silvery: "#dce9eb",
+        subtext: "#E7E5DF"
       },
     },
   },
