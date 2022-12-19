@@ -6,7 +6,7 @@ import { logout } from "~/utils/login.server";
 // import { getUser } from "~/utils/login.server";
 import { NavMenu } from "./NavMenu";
 import UserInfo from "./UserInfo";
-import Logo from "~/assets/trouvaille1.png";
+import Logo from "~/../assets/trouvaille1.png";
 
 type Props = {
   children: ReactElement;
