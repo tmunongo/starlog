@@ -6,7 +6,6 @@ import { logout } from "~/utils/login.server";
 // import { getUser } from "~/utils/login.server";
 import { NavMenu } from "./NavMenu";
 import UserInfo from "./UserInfo";
-import Logo from "./assets/trouvaille1.png";
 
 type Props = {
   children: ReactElement;
@@ -24,7 +23,7 @@ const PlacesLayout = ({ children }: Props) => {
    {/* #353e46 */} 
       <div className="h-[80px] bg-[#1c2541] dark:bg-[#353e46]">
         <div className="absolute left-20 top-3 md:top-4 bg-greeny dark:bg-oranj rounded-lg flex items-center p-2 px-3">
-        <img className="h-8 w-auto md:mr-3 rounded-md" src={Logo} alt="logo" />
+        <img className="h-8 w-auto md:mr-3 rounded-md" src="https://res.cloudinary.com/ta1da-cloud/image/upload/v1671442225/seven-wonders/trouvaille1_vrghpe.png" alt="logo" />
         <a href="/">
             <span className="font-montserrat md:text-xl">trouvaille</span>
           </a>
