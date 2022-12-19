@@ -6,6 +6,7 @@ import { logout } from "~/utils/login.server";
 // import { getUser } from "~/utils/login.server";
 import { NavMenu } from "./NavMenu";
 import UserInfo from "./UserInfo";
+import Logo from "../../assets/trouvaille1.png";
 
 type Props = {
   children: ReactElement;
@@ -21,15 +22,16 @@ const PlacesLayout = ({ children }: Props) => {
   return (
     <div className="bg-white dark:bg-greey">
    {/* #353e46 */} 
-      <div className="h-16 bg-[#1c2541] dark:bg-[#353e46]">
-        <div className="absolute left-20 top-3 md:top-4 bg-greeny dark:bg-oranj rounded-full p-2 px-3">
-          <a href="/">
-            <span>places.io</span>
+      <div className="h-[80px] bg-[#1c2541] dark:bg-[#353e46]">
+        <div className="absolute left-20 top-3 md:top-4 bg-greeny dark:bg-oranj rounded-lg flex items-center p-2 px-3">
+        <img className="h-8 w-auto md:mr-3 rounded-md" src={Logo} alt="logo" />
+        <a href="/">
+            <span className="font-montserrat md:text-xl">trouvaille</span>
           </a>
         </div>
         <UserInfo />
         {/* Side menu toggle button */}
-        <div className=" absolute top-3 left-2 md:left-4 rounded-full z-50">
+        <div className=" absolute top-3 md:top-4 left-2 md:left-4 rounded-full z-50">
           <button onClick={toggleOpen} className="p-2 md:p-3">
             {isOpen ? <MdClose size={25} color={"#fe772b"} /> : <MdMenu size={25} color={"#fe772b"} />}
           </button>

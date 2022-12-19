@@ -16,7 +16,7 @@ const UserInfo = (props: Props) => {
   <></>;
   return (
     // {/* user profile and log out buttons */}
-    <div className="absolute top-3 right-2 md:right-12">
+    <div className="absolute top-3 md:top-4 right-2 md:right-12">
       {data.user ? (
         // Will be replaced with a profile icon
         <div className="flex justify-around items-center">

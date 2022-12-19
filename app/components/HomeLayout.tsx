@@ -9,6 +9,8 @@ import ButtonAsLink from "./ButtonAsLink";
 import ContributeBannerBox from "./ContributeBannerBox";
 import JoinBannerBox from "./JoinBannerBox";
 import LinkButtonElement from "./LinkButtonElement";
+import Logo from "../../assets/trouvaille1.png";
+
 import { NavMenu } from "./NavMenu";
 
 type Props = {
@@ -42,13 +44,13 @@ const HomeLayout = ({ children }: Props) => {
                   method="post"
                   className="flex justify-center items-center"
                 >
-                  <button type="submit">
+                  <button className="p-1" type="submit">
                     <AiOutlinePoweroff size={20} />
                   </button>
                 </Form>
               </span>
               <LinkButtonElement to="/profile">
-                <span>Hi, {data.user.username}</span>
+                <span className="font-montserrat">Hi, {data.user.username}</span>
               </LinkButtonElement>
             </div>
           ) : (
@@ -61,9 +63,10 @@ const HomeLayout = ({ children }: Props) => {
             {isOpen ? <MdClose size={25} color={"#da4620"} /> : <MdMenu size={25} color={"#da4620"} />}
           </button>
         </div>
-        <div className="absolute left-20 top-3 bg-greeny dark:bg-oranj rounded-full p-2 px-3">
+        <div className="absolute flex items-center left-14 md:left-20 top-2 md:top-3 md:dark:bg-oranj rounded-lg p-2 px-3">
+          <img className="h-10 w-auto md:mr-3 rounded-md" src={Logo} alt="logo" />
           <a href="/">
-            <span className="pt-2 font-comic text-base uppercase font-semibold">essential.places</span>
+            <span className="hidden md:flex font-montserrat md:text-2xl">trouvaille</span>
           </a>
         </div>
       </div>

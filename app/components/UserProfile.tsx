@@ -1,7 +1,7 @@
 import React from 'react';
 import ButtonAsLink from "./ButtonAsLink";
 import { useLoaderData } from "@remix-run/react";
-
+import { IoCalendarNumber } from "react-icons/io5"
 type Props = {};
 
 type LoaderData = {
@@ -20,7 +20,12 @@ const UserProfile = (props: Props) => {
       </div>
       <div className="h-full md:h-1/2 w-2/3 md:w-full p-3 flex flex-col items-center md:items-start justify-around">
         <div className="flex flex-col items-center justify-around h-full w-full">
-          <p className="italic text-gray-500">Member Since: {data.dbUser.createdAt}</p>
+          <span className="flex items-center justify-around">
+
+          <IoCalendarNumber size={15} color="#6f6f6f"/> 
+          <p className="italic text-gray-500">
+          Member Since: {data.dbUser.createdAt}</p>
+          </span>
           <h3 className="uppercase">about</h3>
           <p>{data.dbUser.about}</p>
 
