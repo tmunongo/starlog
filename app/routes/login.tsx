@@ -164,6 +164,11 @@ const Login = (props: Props) => {
 
   return (
     <div className="flex items-center justify-center w-screen h-screen">
+      <div className="absolute top-2 right-2 w-max p-2 bg-oranj rounded-md">
+        <a href="/">
+          Straight to Home
+        </a>
+      </div>
       <div className="flex flex-col items-center justify-center  h-4/5 w-full md:w-1/2 shadow-md p-4">
         <form
           method="post"

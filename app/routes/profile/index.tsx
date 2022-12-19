@@ -47,14 +47,12 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 const Profile = (props: Props) => {
   const data = useLoaderData<LoaderData>() as unknown as LoaderData;
-  console.log(data);
   
   return (
     <PlacesLayout>
       <div className="flex flex-col md:flex-row items-start justify-center mx-3 md:ml-[33%] min-h-screen">
         <UserProfile />
         <div className="flex flex-col w-full h-full items-start justify-around p-2 md:p-8">
-          <p>Joined: {data.dbUser.createdAt} </p>
           <div className="flex items-center justify-around overflow-x-scroll h-[200px] w-full md:w-4/5 border-b-2 border-black dark:border-oranj my-2">
           {data.dbUser.wishlist ? 
             data.dbUser.wishlist.map((item, index) => {

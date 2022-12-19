@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@fontsource/comic-neue": "^4.5.10",
+    "@fontsource/montserrat": "^4.5.13",
     "@fontsource/roboto": "^4.5.8",
     "@headlessui/react": "^1.7.5",
     "@prisma/client": "^4.7.0",

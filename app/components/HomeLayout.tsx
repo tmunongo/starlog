@@ -7,7 +7,7 @@ import { MdClose, MdMenu } from "react-icons/md";
 import type { getUser } from "~/utils/login.server";
 import ButtonAsLink from "./ButtonAsLink";
 import LinkButtonElement from "./LinkButtonElement";
-import Logo from "~/../assets/trouvaille1.png";
+import Logo from "./assets/trouvaille1.png";
 
 import { NavMenu } from "./NavMenu";
 

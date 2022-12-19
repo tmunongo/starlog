@@ -81,9 +81,9 @@ export default function Index() {
     <HomeLayout>
       <div className="min-h-screen w-screen flex flex-col items-center justify-start my-2">
         <div className="flex flex-col md:flex-row items-start justify-around">
-          <div className="mt-6 p-4 rounded-md h-full w-full md:w-4/5">
-            <p className="text-lg dark:text-white md:text-xl">Explore New Places</p>
-            <p className="text-slate-600 dark:text-white text-base md:text-lg">
+          <div className="mt-6 md:p-4 rounded-md h-full w-full md:w-4/5">
+            <p className="text-lg dark:text-white md:text-xl px-2">Explore New Places</p>
+            <p className="text-slate-600 dark:text-white text-base md:text-lg px-2">
               Pick a Category to Find What You're Looking For
             </p>
             <div className="w-full h-14 flex items-center justify-start">

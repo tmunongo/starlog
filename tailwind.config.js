@@ -6,6 +6,7 @@ module.exports = {
     extend: {
       fontFamily: {
         "comic": ['"Comic Neue"'],
+        "montserrat": ["Montserrat"],
       },
       backgroundImage: {
         "hero-image": "url('../../assets/luca-bravo-O453M2Liufs-unsplash.jpg')",
