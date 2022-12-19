@@ -1,6 +1,6 @@
 import type { ActionFunction } from "@remix-run/node";
 import { AnimatePresence, motion, useCycle } from "framer-motion";
-import { ReactElement } from "react";
+import type { ReactElement } from "react";
 import { MdClose, MdMenu } from "react-icons/md";
 import { logout } from "~/utils/login.server";
 // import { getUser } from "~/utils/login.server";

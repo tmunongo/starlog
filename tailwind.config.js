@@ -9,9 +9,8 @@ module.exports = {
         "montserrat": ["Montserrat"],
       },
       backgroundImage: {
-        "hero-image": "url('../../assets/luca-bravo-O453M2Liufs-unsplash.jpg')",
-        "hero-dark": "url('../../assets/banner-dark.svg')",
-        "hero-light": "url('../../assets/banner-light.svg')",
+        "hero-dark": "url('../../public/assets/banner-dark.svg')",
+        "hero-light": "url('../../public/assets/banner-light.svg')",
       },
       colors: {
         seashell: "#FFF3F0",
