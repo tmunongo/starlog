@@ -61,7 +61,7 @@ const HomeLayout = ({ children }: Props) => {
           </button>
         </div>
         <div className="absolute flex items-center left-14 md:left-20 top-2 md:top-3 md:dark:bg-oranj rounded-lg p-2 px-3">
-          <img className="h-10 w-auto md:mr-3 rounded-md" src="https://res.cloudinary.com/ta1da-cloud/image/upload/v1671442225/seven-wonders/trouvaille1_vrghpe.png" alt="logo" />
+          <img className="h-10 w-auto md:mr-3 rounded-md" src="https://res.cloudinary.com/ta1da-cloud/image/upload/v1671442731/seven-wonders/trouvaille1_vrghpe.png" alt="logo" />
           <a href="/">
             <span className="hidden md:flex font-montserrat md:text-2xl">trouvaille</span>
           </a>
