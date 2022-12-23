@@ -1,6 +1,10 @@
 import { Listbox } from "@headlessui/react";
 import type { Place } from "@prisma/client";
-import type { ActionFunction, LoaderFunction } from "@remix-run/node";
+import type {
+  ActionFunction,
+  LoaderFunction,
+  MetaFunction,
+} from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import prisma from "prisma/db.server";
@@ -12,7 +16,6 @@ import HomeLayout from "~/components/HomeLayout";
 import HomePlace from "~/components/HomePlace";
 import { getUnique } from "~/utils/getUnique";
 import { getUser, logout } from "../utils/login.server";
-
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
@@ -89,7 +92,9 @@ export default function Index() {
       <div className="min-h-screen w-screen flex flex-col items-center justify-start my-2">
         <div className="flex flex-col md:flex-row items-start justify-around">
           <div className="mt-6 md:p-4 rounded-md h-full w-full md:w-4/5">
-            <p className="text-lg dark:text-white md:text-xl px-2">Explore New Places</p>
+            <p className="text-lg dark:text-white md:text-xl px-2">
+              Explore New Places
+            </p>
             <p className="text-slate-600 dark:text-white text-base md:text-lg px-2">
               Pick a Category to Find What You're Looking For
             </p>
@@ -144,13 +149,15 @@ export default function Index() {
             <div className="flex flex-col items-start justify-around">
               {filter == ""
                 ? data.placeListItems.map((item, index) => (
-                  <HomePlace key={index} place={item} />
-                ))
+                    <HomePlace key={index} place={item} />
+                  ))
                 : data.placeListItems
-                  .filter(
-                    (place) => place[filterCriteria.toLowerCase()] == filter
-                  )
-                  .map((item, index) => <HomePlace key={index} place={item} />)}
+                    .filter(
+                      (place) => place[filterCriteria.toLowerCase()] == filter
+                    )
+                    .map((item, index) => (
+                      <HomePlace key={index} place={item} />
+                    ))}
             </div>
           </div>
           <div className="w-full md:w-auto md:mt-[150px] flex flex-col md:items-start items-center justify-start">
