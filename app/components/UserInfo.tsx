@@ -16,11 +16,11 @@ const UserInfo = (props: Props) => {
   <></>;
   return (
     // {/* user profile and log out buttons */}
-    <div className="absolute top-3 md:top-4 right-2 md:right-12">
+    <div className="absolute top-3 md:top-4 right-2 md:right-12 text-text_dark_primary dark:text-text_light_primary">
       {data.user ? (
         // Will be replaced with a profile icon
         <div className="flex justify-around items-center">
-          <span className="mx-2 bg-greeny dark:bg-oranj rounded-md p-1">
+          <span className="mx-2 bg-highlights_light dark:bg-highlights_dark rounded-md p-1">
             <Form
               action="/logout"
               method="post"

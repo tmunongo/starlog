@@ -2,9 +2,9 @@ import type { Place } from "@prisma/client";
 import {
   MdArrowDownward,
   MdArrowUpward,
+  MdFastfood,
   MdMuseum,
   MdPark,
-  MdFastfood
 } from "react-icons/md";
 import { calcOverall } from "~/utils/calcOverall";
 import { generateScoreVisual } from "~/utils/generateScoreBars";
@@ -24,7 +24,7 @@ const HomePlace = ({ place }: Props) => {
         return <MdPark size={20} />;
       }
       case "Food": {
-        return <MdFastfood size={20} />
+        return <MdFastfood size={20} />;
       }
     }
   };
@@ -106,7 +106,7 @@ const HomePlace = ({ place }: Props) => {
         </div>
       </div>
       {/* Large screen version */}
-      <div className="hidden bg-white dark:bg-[#3D3E3E] sm:flex items-center justify-around p-3 w-full shadow-md my-2 rounded-md h-[300px] text-black dark:text-white">
+      <div className="hidden bg-bg_light_secondary dark:bg-bg_dark_secondary sm:flex items-center justify-around p-3 w-full shadow-md my-2 rounded-md h-[300px] text-text_light_secondary dark:text-text_dark_secondary">
         <div className="w-[30%] h-full">
           <div
             style={{
@@ -194,7 +194,7 @@ const HomePlace = ({ place }: Props) => {
             />
           </div>
           <div className="text-center w-full my-1">
-            <span className="bg-[#BBDEF0] p-1 rounded-md text-sm">
+            <span className="bg-[#BBDEF0] dark:bg-[#808D8E] p-1 rounded-md text-sm">
               {place.city}, {place.country}
             </span>
           </div>

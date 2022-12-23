@@ -41,6 +41,7 @@ export async function register({ email, username, password }: RegisterForm) {
       email: email,
       username: username,
       hashedPassword: hashed,
+      about: "Tell us a little bit about yourself",
       avatar:
         "https://res.cloudinary.com/ta1da-cloud/image/upload/v1670981381/seven-wonders/avatars/Photo_12-12-2022_21_45_06_xkn6f9.jpg",
     },

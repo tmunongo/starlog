@@ -5,14 +5,14 @@ import type {
   UploadHandler,
 } from "@remix-run/node";
 import {
-  json,
-  redirect,
   unstable_composeUploadHandlers as composeUploadHandlers,
   unstable_createMemoryUploadHandler as createMemoryUploadHandler,
+  json,
   unstable_parseMultipartFormData as parseMultipartFormData,
+  redirect,
 } from "@remix-run/node";
 
-import { Form, useActionData, useLoaderData } from "@remix-run/react";
+import { useActionData, useLoaderData } from "@remix-run/react";
 import prisma from "prisma/db.server";
 import { MdCamera } from "react-icons/md";
 import PlacesLayout from "~/components/PlacesLayout";
@@ -121,14 +121,14 @@ const NewPlace = (props: Props) => {
       <div className="mx-1 md:mx-[20%]">
         <h2 className="my-2 text-center md:text-start">Add a new location</h2>
         <p className="my-2 text-gray-600 dark:text-subtext text-center md:text-start">
-          Share your favorite place with the Seven Wonders community.
+          Share your favorite place with the{" "}
+          <span className="font-semibold">trouvaille</span> community.
         </p>
         <div>
           <form
             method="post"
             encType="multipart/form-data"
-            
-            className="flex flex-col items-center justify-around border-black rounded-md shadow-lg p-2"
+            className="bg-bg_light_secondary bg-bg_dark_secondary flex flex-col items-center justify-around border-black rounded-md shadow-lg p-2"
             // reloadDocument
           >
             <div className="w-full flex items-center justify-center">
@@ -223,7 +223,10 @@ const NewPlace = (props: Props) => {
               </div>
             </div>
             <div className="flex flex-col items-start justify-center">
-              <button type="submit" className="p-2 bg-myr rounded-md my-2">
+              <button
+                type="submit"
+                className="p-2 bg-highlights_light dark:bg-highlights_dark rounded-md my-2"
+              >
                 Submit
               </button>
               <span className="italic text-gray-600 dark:text-subtext">
@@ -231,7 +234,9 @@ const NewPlace = (props: Props) => {
               </span>
             </div>
           </form>
-          {actionData?.errorMsg && <p className="italic text-red-300">{actionData.errorMsg}</p>}
+          {actionData?.errorMsg && (
+            <p className="italic text-red-300">{actionData.errorMsg}</p>
+          )}
         </div>
       </div>
     </PlacesLayout>

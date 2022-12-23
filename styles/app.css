@@ -4,29 +4,29 @@
 
 /* headings */
 h1 {
-  @apply text-3xl font-montserrat;
+  @apply text-3xl font-montserrat text-text_light_primary dark:text-text_dark_primary;
 }
 
 h2 {
-  @apply text-2xl font-montserrat;
+  @apply text-2xl font-montserrat text-text_light_primary dark:text-text_dark_primary;
 }
 
 h3 {
-  @apply text-xl font-montserrat;
+  @apply text-xl font-montserrat text-text_light_primary dark:text-text_dark_primary;
 }
 
 /* body */
 body {
   /* font-family: "Roboto", sans-serif; */
-  @apply font-["Roboto"]  transition-all duration-500 max-w-full;
+  @apply font-["Roboto"]  transition-all duration-500 max-w-full text-text_light_secondary dark:text-bg_dark_secondary;
 }
 
 aside {
-  @apply fixed w-[300px] h-screen bg-white dark:bg-greey z-40;
+  @apply fixed w-[300px] h-screen bg-white dark:bg-bg_dark_primary z-40;
 }
 
 #nav-container {
-  @apply my-16 mx-6 dark:text-white font-montserrat;
+  @apply my-16 mx-6 text-text_light_primary dark:text-text_dark_primary font-montserrat;
 }
 
 #nav-container ul {
@@ -34,7 +34,7 @@ aside {
 }
 
 #nav-button {
-  @apply sticky bg-white dark:bg-greey z-50 rounded-full cursor-pointer m-4 border-none px-2 md:px-3 py-3;
+  @apply sticky bg-highlights_light dark:bg-highlights_dark z-50 rounded-full cursor-pointer m-4 border-none px-2 md:px-3 py-3;
 }
 
 #nav-btn-container {

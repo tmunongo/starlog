@@ -2,7 +2,7 @@ import type { Place } from "@prisma/client";
 import { json, LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import prisma from "prisma/db.server";
-import HomeLayout from "~/components/HomeLayout";
+import PlacesLayout from "~/components/PlacesLayout";
 import { getUser } from "~/utils/login.server";
 
 type Props = {};
@@ -39,16 +39,16 @@ const PlaceDetailsPage = (props: Props) => {
   const data = useLoaderData<LoaderData>() as unknown as LoaderData;
 
   return (
-    <HomeLayout>
-      <div className="flex flex-col md:flex-row items-start md:items-center justify-around md:justify-start m-2 md:mx-[10%] p-2 w-full">
+    <PlacesLayout>
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-around md:justify-start md:m-2 md:mx-[10%] p-2 w-screen">
         <div className="w-full md:w-1/3 p-2">
-          <div className="rounded-md h-80 w-48 flex flex-col items-center justify-around bg-gray-200 shadow-md p-2">
+          <div className="rounded-md h-80 w-full md:w-48 flex flex-col items-center justify-around bg-gray-200 shadow-md p-2">
             <img
               src={data.placeItem.coverImage}
               alt={data.placeItem.name}
               className="rounded-md"
             />
-            <div className="bg-mintgreen p-1 rounded-lg">
+            <div className="bg-subtext p-1 rounded-lg">
               <p>{data.placeItem.city},</p>
               <p>{data.placeItem.country}</p>
             </div>
@@ -56,7 +56,7 @@ const PlaceDetailsPage = (props: Props) => {
         </div>
         <div className="w-full md:w-2/3"></div>
       </div>
-    </HomeLayout>
+    </PlacesLayout>
   );
 };
 
