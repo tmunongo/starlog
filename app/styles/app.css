@@ -1055,7 +1055,7 @@ video {
 }
 
 .bg-hero-light {
-  background-image: url('../../public/assets/banner-light.svg');
+  background-image: url('../../assets/banner-light.svg');
 }
 
 .bg-cover {
@@ -1447,7 +1447,7 @@ aside {
 }
 
 .dark .dark\:bg-hero-dark {
-  background-image: url('../../public/assets/banner-dark.svg');
+  background-image: url('../../assets/banner-dark.svg');
 }
 
 .dark .dark\:text-white {

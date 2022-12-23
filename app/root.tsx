@@ -1,7 +1,7 @@
-import FontStyles from "@fontsource/roboto/index.css";
 import * as ComicFont from "@fontsource/comic-neue/index.css";
 import * as Montserrat from "@fontsource/montserrat/index.css";
-import type { MetaFunction } from "@remix-run/node";
+import FontStyles from "@fontsource/roboto/index.css";
+import type { LoaderFunction, MetaFunction } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -9,10 +9,16 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
+import clsx from "clsx";
 import styles from "./styles/app.css";
-import clsx from 'clsx';
-import { ThemeProvider, useTheme } from "./utils/theme-provider";
+import { Theme, ThemeProvider, useTheme } from "./utils/theme-provider";
+import { getThemeSession } from "./utils/theme.server";
+
+export type LoaderData = {
+  theme: Theme | null;
+};
 
 export function links() {
   return [
@@ -25,9 +31,19 @@ export function links() {
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
-  title: "Seven Wonders",
+  title: "Truvaille",
   viewport: "width=device-width,initial-scale=1",
 });
+
+export const loader: LoaderFunction = async ({ request }) => {
+  const themeSession = await getThemeSession(request);
+
+  const data: LoaderData = {
+    theme: themeSession.getTheme(),
+  };
+
+  return data;
+};
 
 function App() {
   const [theme] = useTheme();
@@ -49,9 +65,11 @@ function App() {
 }
 
 export default function AppWithProviders() {
+  const data = useLoaderData<LoaderData>();
+
   return (
-    <ThemeProvider>
+    <ThemeProvider specifiedTheme={data.theme}>
       <App />
     </ThemeProvider>
-  )
+  );
 }

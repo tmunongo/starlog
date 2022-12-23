@@ -11,6 +11,11 @@ import type { User } from "@prisma/client";
 
 type Props = {}
 
+export const meta: MetaFunction = () => ({
+  charset: "utf-8",
+  title: "My Places | Truvaille",
+  viewport: "width=device-width,initial-scale=1",
+});
 
 type LoaderData = {
   user: Awaited<ReturnType<typeof getUser>>;

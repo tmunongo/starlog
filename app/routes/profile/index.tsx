@@ -1,17 +1,17 @@
+import type { Place, User } from "@prisma/client";
 import type { LoaderFunction } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
+import prisma from "prisma/db.server";
 import PlacesLayout from "~/components/PlacesLayout";
 import UserProfile from "~/components/UserProfile";
 import { getUser } from "~/utils/login.server";
-import prisma from "prisma/db.server.ts";
-import type { User } from "@prisma/client";
 
 type Props = {};
 
 type LoaderData = {
   user: Awaited<ReturnType<typeof getUser>>;
-  user: User;
+  dbUser: User;
   errorMessage?: string;
 };
 
@@ -22,24 +22,24 @@ export const loader: LoaderFunction = async ({ request }) => {
     return redirect("/login");
   }
 
-  dbUser = await prisma.user.findUnique({
-  where: {
-     username:  user.username,
-  },
-  include: {
-    submissions: true,
-    wishlist: true,
-    visited: true
-  }
+  const dbUser = await prisma.user.findUnique({
+    where: {
+      username: user.username,
+    },
+    include: {
+      submissions: true,
+      wishlist: true,
+      visited: true,
+    },
   });
 
-  if (!dbUser){
+  if (!dbUser) {
     return "User not found";
   }
 
   const data: LoaderData = {
     dbUser,
-    user
+    user,
   };
 
   return json(data);
@@ -47,43 +47,40 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 const Profile = (props: Props) => {
   const data = useLoaderData<LoaderData>() as unknown as LoaderData;
-  
+
   return (
     <PlacesLayout>
       <div className="flex flex-col md:flex-row items-start justify-center mx-3 md:ml-[33%] min-h-screen">
         <UserProfile />
         <div className="flex flex-col w-full h-full items-start justify-around p-2 md:p-8">
           <div className="flex items-center justify-around overflow-x-scroll h-[200px] w-full md:w-4/5 border-b-2 border-black dark:border-oranj my-2">
-          {data.dbUser.wishlist ? 
-            data.dbUser.wishlist.map((item, index) => {
-              return(
-              <div key={index}       
-            style={{
-              backgroundImage: `url(${item.coverImage})`,
-              backgroundPosition: "center",
-              backgroundSize: "cover",
-            }}
-              className="rounded-md my-1 shadow-md">
-                <p>
-                  {item.name}
-                </p>
-                <p>
-                  {item.city}, {item.country}
-                </p>
+            {data.dbUser.wishlist ? (
+              data.dbUser.wishlist.map((item: Place, index: number) => {
+                return (
+                  <div
+                    key={index}
+                    style={{
+                      backgroundImage: `url(${item.coverImage})`,
+                      backgroundPosition: "center",
+                      backgroundSize: "cover",
+                    }}
+                    className="rounded-md my-1 shadow-md"
+                  >
+                    <p>{item.name}</p>
+                    <p>
+                      {item.city}, {item.country}
+                    </p>
+                  </div>
+                );
+              })
+            ) : (
+              <div className="h-full w-1/3">
+                <h2>You have not added any places to your wishlist</h2>
               </div>
-            
-            );
-            })
-           : 
-            <div className="h-full w-1/3">
-              <h2>You have not added any places to your wishlist</h2>
-            </div>
-          }  
+            )}
           </div>
 
-          <div className="flex items-center justify-end overflow-x-scroll h-[200px] w-full md:w-4/5 border-b-2 border-black dark:border-oranj">
-            
-          </div>
+          <div className="flex items-center justify-end overflow-x-scroll h-[200px] w-full md:w-4/5 border-b-2 border-black dark:border-oranj"></div>
         </div>
       </div>
     </PlacesLayout>

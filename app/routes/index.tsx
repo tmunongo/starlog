@@ -13,6 +13,13 @@ import HomePlace from "~/components/HomePlace";
 import { getUnique } from "~/utils/getUnique";
 import { getUser, logout } from "../utils/login.server";
 
+
+export const meta: MetaFunction = () => ({
+  charset: "utf-8",
+  title: "Home | Truvaille",
+  viewport: "width=device-width,initial-scale=1",
+});
+
 const filterOptions = [
   { label: "Country", value: "country" },
   { label: "City", value: "city" },

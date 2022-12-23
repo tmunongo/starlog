@@ -7,7 +7,8 @@ async function main() {
     data: {
       email: "test1@example.com",
       username: "test_user1",
-      hashedPassword: "test_password1",
+      hashedPassword:
+        "$2a$10$C6w/P1FALyrQ7Y6zsUljMOKxf8tZxavymQf8WDiX71IIQufBx0/Mu",
       avatar:
         "https://res.cloudinary.com/ta1da-cloud/image/upload/v1670981381/seven-wonders/avatars/Photo_12-12-2022_21_45_06_xkn6f9.jpg",
       submissions: {
