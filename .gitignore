@@ -5,7 +5,6 @@ cmake-build-*/
 *.o
 
 *.out
-starlog
 # IDE files
 .vscode/
 .idea/

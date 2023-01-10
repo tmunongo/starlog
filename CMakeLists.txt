@@ -15,4 +15,7 @@ endif()
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
 # Main executable
-add_executable(starlog src/main.cpp)
+add_executable(starlog 
+    src/main.cpp
+    src/observation.cpp
+)
