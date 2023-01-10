@@ -1,0 +1,19 @@
+# Build directories
+build/
+cmake-build-*/
+# Compiled binaries
+*.o
+
+*.out
+starlog
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+# Data files (we'll create these during testing)
+*.log
+observations.json
+
+timeline.txt
