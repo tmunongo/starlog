@@ -20,6 +20,8 @@ namespace starlog {
 
         std::string toString() const;
 
+        void setNotes(const std::string& notes);
+
         private:
             std::string object_name_;
             double right_ascension_;

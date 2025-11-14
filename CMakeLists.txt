@@ -18,4 +18,5 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 add_executable(starlog 
     src/main.cpp
     src/observation.cpp
+    src/observation_log.cpp
 )

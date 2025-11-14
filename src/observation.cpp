@@ -53,4 +53,8 @@ namespace starlog {
 
             return oss.str();
     }
+
+    void Observation::setNotes(const std::string& notes) {
+        notes_ = notes;
+    }
 } // namespace starlog

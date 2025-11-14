@@ -1,10 +1,13 @@
 #include <iostream>
 #include "starlog/observation.h"
+#include "starlog/observation_log.h"
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[])
+{
     std::cout << "Starlog v1.0.0 - Astronomical Observation Logger\n";
 
-    if (argc < 2) {
+    if (argc < 2)
+    {
         std::cout << "Usage: starlog <command> [options]\n";
         std::cout << "Commands:\n";
         std::cout << " add - Add a new observation\n";
@@ -15,20 +18,41 @@ int main(int argc, char* argv[]) {
 
     std::cout << "Command: " << argv[1] << "\n";
 
-    // quick observation calss test
-    if (std::string(argv[1]) == "test") {
-        starlog::Observation obs("M31 (Andromeda Galaxy)",
-                                  0.7122, // RA in hours
-                                  41.2689, // Dec in degrees
-                                  "Clear night, excellent visibility");
+    std::cout << "(Not implemented yet)\n";
 
-        std::cout << "\n--- Test Observation ---\n";
-        std::cout << obs.toString();
+    // Quick test of Observation class
+    if (std::string(argv[1]) == "test")
+    {
+        starlog::ObservationLog log;
+        // Add some test observations
+        log.addObservation(starlog::Observation("M31 (Andromeda Galaxy)",
+                                                0.7122, 41.2689,
+                                                "Clear night, excellent vis"));
 
+        log.addObservation(starlog::Observation("M42 (Orion Nebula)",
+                                                5.5833, -5.3911,
+                                                "Beautiful colors visible"));
+
+        log.addObservation(starlog::Observation("Jupiter",
+                                                12.5667,
+                                                -3.2453,
+                                                "Four moons visible"));
+
+        std::cout << "\n--- All Observations (" << log.size() << ") ---\n";
+        for (const auto &obs : log.getAllObservations())
+        {
+            std::cout << "\n"
+                      << obs.toString();
+        }
+        std::cout << "\n--- Search Results for 'M' ---\n";
+        auto results = log.searchByName("M");
+        for (const auto &obs : results)
+        {
+            std::cout << "\n"
+                      << obs.toString();
+        }
         return 0;
     }
-    
-    std::cout << "(Not implemented yet)\n";
 
     return 0;
 }
